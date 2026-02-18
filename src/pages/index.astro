@@ -40,11 +40,20 @@ const sponsors = [
     description: "The intelligence platform for behavioral health.",
     url: "https://www.clinicalnotes.ai/",
     accent: "#9900ff"
-  },
+  }
+];
+
+const organizers = [
   {
     name: "Backland Labs",
     description: "AI consulting, workflow automation, and builder events in San Diego.",
     url: "https://www.backlandlabs.io/",
+    accent: "#111111"
+  },
+  {
+    name: "AuraPath",
+    description: "AI implementation consulting. Custom AI solutions that work.",
+    url: "https://www.aurapath.us/",
     accent: "#111111"
   }
 ];
@@ -182,10 +191,6 @@ const events = [
               <p class="eyebrow">Who's involved</p>
               <h2>Participating <span class="accent">communities</span></h2>
             </div>
-            <p class="section-lead">
-              This weekend is organized in collaboration with San Diego's leading builder communities.
-            </p>
-
             <div class="community-grid">
               {
                 communities.map((c) => (
@@ -210,10 +215,6 @@ const events = [
               <p class="eyebrow">Thank you</p>
               <h2>Weekend <span class="accent">sponsors</span></h2>
             </div>
-            <p class="section-lead">
-              This weekend is made possible by organizations that support the San Diego builder community.
-            </p>
-
             <div class="sponsor-grid">
               {
                 sponsors.map((s) => (
@@ -227,10 +228,28 @@ const events = [
                 ))
               }
             </div>
+          </div>
+        </section>
 
-            <div class="sponsor-cta-box">
-              <p class="sponsor-cta-text">More sponsor slots available</p>
-              <a href="mailto:max@backlandlabs.io" class="btn btn-primary">Become a sponsor</a>
+        <section id="organizers" class="section">
+          <div class="container">
+            <div class="section-heading">
+              <p class="eyebrow">Organized by</p>
+              <h2>Weekend <span class="accent">organizers</span></h2>
+            </div>
+
+            <div class="organizer-grid">
+              {
+                organizers.map((o) => (
+                  <a href={o.url} target="_blank" rel="noopener noreferrer" class="sponsor-card" style={`--card-accent: ${o.accent}`}>
+                    <div class="sponsor-mark" aria-hidden="true">{o.name.charAt(0)}</div>
+                    <div class="sponsor-info">
+                      <h3>{o.name}</h3>
+                      <p>{o.description}</p>
+                    </div>
+                  </a>
+                ))
+              }
             </div>
 
             <p class="support-note">

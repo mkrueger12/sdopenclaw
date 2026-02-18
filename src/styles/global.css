@@ -553,6 +553,15 @@ h2 .accent {
   border-color: var(--accent-hover);
 }
 
+/* ---- ORGANIZERS ---- */
+
+.organizer-grid {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: 1fr;
+  margin-top: 1.5rem;
+}
+
 /* ---- RESPONSIVE ---- */
 
 @media (min-width: 52rem) {
@@ -575,7 +584,7 @@ h2 .accent {
   }
 
   .sponsor-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .sponsor-cta-box {
@@ -583,5 +592,9 @@ h2 .accent {
     justify-content: space-between;
     text-align: left;
     padding: 2rem 2.5rem;
+  }
+
+  .organizer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
