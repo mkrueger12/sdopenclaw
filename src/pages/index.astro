@@ -3,39 +3,29 @@ import "../styles/global.css";
 
 const weekend = {
   title: "San Diego OpenClaw Weekend",
-  dates: "June 12-14, 2026",
+  dates: "February 28 - March 1, 2026",
   location: "San Diego, California",
   summary:
-    "A participant-focused weekend of OpenClaw sessions: meetups, build time, and a community showcase with clear sign-up paths for each event."
+    "A weekend for builders shipping with OpenClaw in San Diego. Meetups, build sessions, and hackathons."
 };
 
 const events = [
-  {
-    title: "Friday Kickoff Meetup",
-    when: "Friday, June 12 - 6:00 PM",
-    where: "North Park Community Space",
+{
+    title: "OpenClaw Global Unhackathon",
+    when: "Saturday, February 28 - 1:00 PM",
+    where: "Address shared with confirmed attendees",
     description:
-      "Open the weekend with intros, project demos, and team matching for people who want to build together.",
+      "A synchronized build session across 24 AI Tinkerers cities worldwide. Hands-on coding with OpenClaw/ClawdBot -- no pitches, no panels, no prizes. Pizza, snacks, and drinks provided.",
     status: "Confirmed",
-    signupLabel: "Reserve Friday spot",
-    signupUrl: "https://example.com/openclaw-friday"
+    signupLabel: "RSVP on AI Tinkerers",
+    signupUrl: "https://san-diego.aitinkerers.org/p/openclaw-global-unhackathon-san-diego"
   },
   {
-    title: "Saturday Build Jam",
-    when: "Saturday, June 13 - Time TBD",
-    where: "Location TBD",
-    description:
-      "Hands-on OpenClaw build sessions with mentors, stations, and collaborative problem-solving.",
-    status: "Details pending",
-    signupLabel: "Sign-up link coming soon",
-    signupUrl: null
-  },
-  {
-    title: "Sunday Community Showcase",
-    when: "Sunday, June 14 - 11:00 AM",
+    title: "SDx OpenClaw Hackathon",
+    when: "Sunday, March 1 - 11:00 AM",
     where: "Waterfront Innovation Hall",
     description:
-      "Share what you built, learn from other participants, and connect with the local OpenClaw community.",
+      "Build custom skills, workflows, and integrations with OpenClaw. Bring a project or start one here.",
     status: "Confirmed",
     signupLabel: "Join Sunday showcase",
     signupUrl: "https://example.com/openclaw-sunday"
@@ -49,11 +39,11 @@ const events = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{weekend.title}</title>
-    <meta name="description" content="San Diego OpenClaw Weekend events and sign-up links." />
+    <meta name="description" content="A weekend for builders shipping with OpenClaw in San Diego. Meetups, build sessions, and hackathons." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Sora:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Red+Hat+Display:wght@700;800;900&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -61,11 +51,10 @@ const events = [
     <div class="page-shell">
       <header class="site-header">
         <div class="container header-row">
-          <p class="brand">OpenClaw San Diego</p>
+          <p class="brand"><span class="accent">Open</span>Claw San Diego</p>
           <nav aria-label="Section navigation" class="top-nav">
-            <a href="#about">What is Happening</a>
             <a href="#events">Events</a>
-            <a href="#signup">Sign Up</a>
+            <a href="#supporters">Supporters</a>
           </nav>
         </div>
       </header>
@@ -74,8 +63,8 @@ const events = [
         <section class="hero">
           <div class="container hero-grid">
             <div>
-              <p class="eyebrow">Weekend landing page</p>
-              <h1>{weekend.title}</h1>
+              <p class="eyebrow">February 28 - March 1, 2026</p>
+              <h1>San Diego <span class="accent">OpenClaw</span> Weekend</h1>
               <p class="hero-lead">{weekend.summary}</p>
               <div class="hero-meta">
                 <p><strong>Dates:</strong> {weekend.dates}</p>
@@ -83,14 +72,13 @@ const events = [
               </div>
               <div class="hero-actions">
                 <a class="btn btn-primary" href="#events">Explore events</a>
-                <a class="btn btn-secondary" href="#signup">How to sign up</a>
+                <a class="btn btn-secondary" href="#supporters">Supporters</a>
               </div>
             </div>
-            <aside class="hero-note" aria-label="Participant note">
-              <h2>Participant-first format</h2>
+            <aside class="hero-note" aria-label="Builder note">
+              <h2>For builders</h2>
               <p>
-                This page is optimized for speed and clarity so you can quickly understand each
-                event and register without hunting for details.
+                This weekend is for people who want to build with OpenClaw, hack on it, and ship things.
               </p>
             </aside>
           </div>
@@ -99,18 +87,15 @@ const events = [
         <section id="about" class="section">
           <div class="container">
             <div class="section-heading">
-              <p class="eyebrow">What is happening</p>
-              <h2>One weekend, multiple OpenClaw experiences</h2>
+              <p class="eyebrow">What is this</p>
+              <h2>A weekend to <span class="accent">build</span> with OpenClaw</h2>
             </div>
             <p class="section-lead">
-              San Diego OpenClaw Weekend brings together builders and curious newcomers for guided
-              sessions, collaborative build time, and a community showcase. Every event includes a
-              direct sign-up path so participants can plan their weekend quickly.
+              San Diego builders getting together to ship with OpenClaw. Skills, plugins, workflows, integrations -- bring a project or start one here.
             </p>
             <ul class="about-points">
-              <li>Practical sessions for both first-time and experienced participants.</li>
-              <li>Clear event-by-event logistics, with placeholders where details are pending.</li>
-              <li>Fast-loading static page in Astro, built for desktop and mobile.</li>
+              <li>Hands-on sessions for first-time and experienced builders.</li>
+              <li>No pitches. Just building.</li>
             </ul>
           </div>
         </section>
@@ -119,7 +104,7 @@ const events = [
           <div class="container">
             <div class="section-heading">
               <p class="eyebrow">Events</p>
-              <h2>Weekend schedule and sign-up paths</h2>
+              <h2>Weekend <span class="accent">schedule</span></h2>
             </div>
 
             <div class="event-grid">
@@ -150,20 +135,18 @@ const events = [
           </div>
         </section>
 
-        <section id="signup" class="section">
+        <section id="supporters" class="section">
           <div class="container signup-box">
             <div class="section-heading">
-              <p class="eyebrow">Sign up</p>
-              <h2>How to join the weekend</h2>
+              <p class="eyebrow">Thank you</p>
+              <h2><span class="accent">Supporters</span></h2>
             </div>
             <p class="section-lead">
-              Use the sign-up action inside each event card above. If a link is still pending,
-              the card will be marked clearly so you know exactly what is confirmed and what is
-              still being finalized.
+              This weekend is made possible by the organizations and individuals who support the San Diego OpenClaw community.
             </p>
             <p class="support-note">
-              Questions or group registration requests: <a href="mailto:hello@sdopenclaw.org"
-                >hello@sdopenclaw.org</a
+              Interested in supporting or hosting an event? Reach out at <a href="mailto:max@backlandlabs.io"
+                >max@backlandlabs.io</a
               >
             </p>
           </div>
