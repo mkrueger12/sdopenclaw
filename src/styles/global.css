@@ -376,17 +376,168 @@ h2 .accent {
   padding: 0.6rem 1.2rem;
 }
 
-/* ---- SIGNUP ---- */
+/* ---- COMMUNITIES ---- */
 
-.signup-box {
+.community-grid {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: 1fr;
+  margin-top: 1.5rem;
+}
+
+.community-card {
   background: var(--surface);
   border: 2px solid var(--line);
-  padding: 2rem;
   box-shadow: 5px 5px 0 var(--line);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 1.4rem 1.6rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+}
+
+.community-card:hover {
+  box-shadow: 3px 3px 0 var(--line);
+  transform: translate(2px, 2px);
+  border-color: var(--card-accent, var(--accent));
+}
+
+.community-badge {
+  width: 3.6rem;
+  height: 3.6rem;
+  background: var(--card-accent, var(--accent));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Red Hat Display", Impact, "Arial Black", sans-serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  border: 2px solid var(--line);
+  flex-shrink: 0;
+}
+
+.community-info h3 {
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.2rem;
+}
+
+.community-tagline {
+  color: var(--card-accent, var(--accent));
+  font-family: "DM Sans", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.community-desc {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.community-arrow {
+  font-size: 1.6rem;
+  color: var(--muted);
+  transition: color 0.15s ease, transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.community-card:hover .community-arrow {
+  color: var(--card-accent, var(--accent));
+  transform: translateX(3px);
+}
+
+/* ---- SPONSORS ---- */
+
+.section-sponsors {
+  background: var(--surface-alt);
+}
+
+.sponsor-grid {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: 1fr;
+  margin-top: 1.5rem;
+}
+
+.sponsor-card {
+  background: var(--surface);
+  border: 2px solid var(--line);
+  box-shadow: 5px 5px 0 var(--line);
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.2rem 1.4rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+}
+
+.sponsor-card:hover {
+  box-shadow: 3px 3px 0 var(--line);
+  transform: translate(2px, 2px);
+  border-color: var(--card-accent, var(--accent));
+}
+
+.sponsor-mark {
+  width: 2.8rem;
+  height: 2.8rem;
+  background: var(--card-accent, var(--accent));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Red Hat Display", Impact, "Arial Black", sans-serif;
+  font-weight: 900;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  border: 2px solid var(--line);
+  flex-shrink: 0;
+}
+
+.sponsor-info h3 {
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.15rem;
+}
+
+.sponsor-info p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.sponsor-cta-box {
+  margin-top: 1.5rem;
+  background: var(--surface);
+  border: 2px dashed var(--line);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  text-align: center;
+}
+
+.sponsor-cta-text {
+  font-family: "Red Hat Display", Impact, "Arial Black", sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
 }
 
 .support-note {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   color: var(--muted);
 }
 
@@ -419,4 +570,18 @@ h2 .accent {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .community-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sponsor-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sponsor-cta-box {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    padding: 2rem 2.5rem;
+  }
 }

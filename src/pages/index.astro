@@ -9,6 +9,46 @@ const weekend = {
     "A weekend for builders shipping with OpenClaw in San Diego. Meetups, build sessions, and hackathons."
 };
 
+const communities = [
+  {
+    name: "AI Tinkerers",
+    tagline: "The builders' room",
+    description:
+      "A global community of engineers, researchers, and founders shipping AI in production. 203+ cities worldwide.",
+    url: "https://san-diego.aitinkerers.org/",
+    accent: "#2563eb"
+  },
+  {
+    name: "SDx",
+    tagline: "San Diego's AI builders",
+    description:
+      "The next-gen startup community for AI builders. 1000+ members, 50+ events, 15+ startups launched.",
+    url: "https://www.sdx.community/",
+    accent: "#F26522"
+  }
+];
+
+const sponsors = [
+  {
+    name: "Cadre AI",
+    description: "AI strategy and implementation consultancy. Less hype, more execution.",
+    url: "https://www.cadreai.com/",
+    accent: "#db4545"
+  },
+  {
+    name: "Clinically AI",
+    description: "The intelligence platform for behavioral health.",
+    url: "https://www.clinicalnotes.ai/",
+    accent: "#9900ff"
+  },
+  {
+    name: "Backland Labs",
+    description: "AI consulting, workflow automation, and builder events in San Diego.",
+    url: "https://www.backlandlabs.io/",
+    accent: "#111111"
+  }
+];
+
 const events = [
 {
     title: "AI Tinkerers Global Unhackathon",
@@ -21,11 +61,11 @@ const events = [
     signupUrl: "https://san-diego.aitinkerers.org/p/openclaw-global-unhackathon-san-diego"
   },
   {
-    title: "SDx OpenClaw: Builders Showcase",
-    when: "Sunday, March 1 - 4:00 PM to 8:00 PM PST",
-    where: "Register to see location",
+    title: "SDx OpenClaw Showcase",
+    when: "Sunday, March 1 - 2:00 PM to 5:00 PM PST",
+    where: "San Diego, CA (address after approval)",
     description:
-      "Build custom skills, workflows, and integrations with OpenClaw. Bring a project or start one here.",
+      "Show-and-tell for builders and claw-curious. Five-minute demos, real stories, no pitches. Mac-mini giveaways! Food & drinks provided.",
     status: "Confirmed",
     signupLabel: "Join Sunday showcase",
     signupUrl: "https://example.com/openclaw-sunday"
@@ -54,7 +94,8 @@ const events = [
           <p class="brand"><span class="accent">Open</span>Claw San Diego</p>
           <nav aria-label="Section navigation" class="top-nav">
             <a href="#events">Events</a>
-            <a href="#supporters">Supporters</a>
+            <a href="#communities">Communities</a>
+            <a href="#sponsors">Sponsors</a>
           </nav>
         </div>
       </header>
@@ -72,7 +113,7 @@ const events = [
               </div>
               <div class="hero-actions">
                 <a class="btn btn-primary" href="#events">Explore events</a>
-                <a class="btn btn-secondary" href="#supporters">Supporters</a>
+                <a class="btn btn-secondary" href="#communities">Communities</a>
               </div>
             </div>
             <aside class="hero-note" aria-label="Builder note">
@@ -135,19 +176,65 @@ const events = [
           </div>
         </section>
 
-        <section id="supporters" class="section">
-          <div class="container signup-box">
+        <section id="communities" class="section">
+          <div class="container">
             <div class="section-heading">
-              <p class="eyebrow">Thank you</p>
-              <h2><span class="accent">Supporters</span></h2>
+              <p class="eyebrow">Who's involved</p>
+              <h2>Participating <span class="accent">communities</span></h2>
             </div>
             <p class="section-lead">
-              This weekend is made possible by the organizations and individuals who support the San Diego OpenClaw community.
+              This weekend is organized in collaboration with San Diego's leading builder communities.
             </p>
+
+            <div class="community-grid">
+              {
+                communities.map((c) => (
+                  <a href={c.url} target="_blank" rel="noopener noreferrer" class="community-card" style={`--card-accent: ${c.accent}`}>
+                    <div class="community-badge" aria-hidden="true">{c.name.charAt(0)}</div>
+                    <div class="community-info">
+                      <h3>{c.name}</h3>
+                      <p class="community-tagline">{c.tagline}</p>
+                      <p class="community-desc">{c.description}</p>
+                    </div>
+                    <span class="community-arrow" aria-hidden="true">&rarr;</span>
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        </section>
+
+        <section id="sponsors" class="section section-sponsors">
+          <div class="container">
+            <div class="section-heading">
+              <p class="eyebrow">Thank you</p>
+              <h2>Weekend <span class="accent">sponsors</span></h2>
+            </div>
+            <p class="section-lead">
+              This weekend is made possible by organizations that support the San Diego builder community.
+            </p>
+
+            <div class="sponsor-grid">
+              {
+                sponsors.map((s) => (
+                  <a href={s.url} target="_blank" rel="noopener noreferrer" class="sponsor-card" style={`--card-accent: ${s.accent}`}>
+                    <div class="sponsor-mark" aria-hidden="true">{s.name.charAt(0)}</div>
+                    <div class="sponsor-info">
+                      <h3>{s.name}</h3>
+                      <p>{s.description}</p>
+                    </div>
+                  </a>
+                ))
+              }
+            </div>
+
+            <div class="sponsor-cta-box">
+              <p class="sponsor-cta-text">More sponsor slots available</p>
+              <a href="mailto:max@backlandlabs.io" class="btn btn-primary">Become a sponsor</a>
+            </div>
+
             <p class="support-note">
-              Interested in supporting or hosting an event? Reach out at <a href="mailto:max@backlandlabs.io"
-                >max@backlandlabs.io</a
-              >
+              Questions? Reach out at <a href="mailto:max@backlandlabs.io">max@backlandlabs.io</a>
             </p>
           </div>
         </section>
