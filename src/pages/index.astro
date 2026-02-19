@@ -12,6 +12,7 @@ const weekend = {
 const communities = [
   {
     name: "AI Tinkerers",
+    logo: "/logos/ai-tinkerers.svg",
     tagline: "The builders' room",
     description:
       "A global community of engineers, researchers, and founders shipping AI in production. 203+ cities worldwide.",
@@ -20,6 +21,7 @@ const communities = [
   },
   {
     name: "SDx",
+    logo: "/logos/devx.jpeg",
     tagline: "San Diego's AI builders",
     description:
       "The next-gen startup community for AI builders. 1000+ members, 50+ events, 15+ startups launched.",
@@ -31,12 +33,14 @@ const communities = [
 const sponsors = [
   {
     name: "Cadre AI",
+    logo: "/logos/cadreai.webp",
     description: "AI strategy and implementation consultancy. Less hype, more execution.",
     url: "https://www.cadreai.com/",
     accent: "#db4545"
   },
   {
     name: "Clinically AI",
+    logo: "/logos/clinically_Ai_logo.png",
     description: "The intelligence platform for behavioral health.",
     url: "https://www.clinicalnotes.ai/",
     accent: "#9900ff"
@@ -46,12 +50,14 @@ const sponsors = [
 const organizers = [
   {
     name: "Backland Labs",
+    logo: "/logos/backlandlabslogo.jpg",
     description: "AI consulting, workflow automation, and builder events in San Diego.",
     url: "https://www.backlandlabs.io/",
     accent: "#111111"
   },
   {
     name: "AuraPath",
+    logo: "/logos/aurapath.svg",
     description: "AI implementation consulting. Custom AI solutions that work.",
     url: "https://www.aurapath.us/",
     accent: "#111111"
@@ -62,17 +68,17 @@ const events = [
   {
     title: "Claw Club",
     when: "Friday, February 27 - 6:00 PM - 10:00 PM",
-    where: "Register to see location",
+    where: "Little Italy, San Diego",
     description:
       "Everyone's got an OpenClaw crustacean, and it's time you join the club. Workshop focused on getting you set up with your own OpenClaw instance -- hosting, models, channels. By the end, you'll have the Power of the Claw.",
     status: "Confirmed",
     signupLabel: "RSVP on DEVx",
     signupUrl: "https://devx.network/events/evt-Dzpa16BGEiR3NGk"
   },
-{
+  {
     title: "AI Tinkerers Global Unhackathon",
     when: "Saturday, February 28 - 1:00 PM - 6:00 PM",
-    where: "San Diego, CA (address after approval)",
+    where: "Rancho Bernardo, San Diego",
     description:
       "A synchronized build session across 24 AI Tinkerers cities worldwide. Hands-on coding with OpenClaw/ClawdBot -- no pitches, no panels, no prizes. Pizza, snacks, and drinks provided.",
     status: "Confirmed",
@@ -80,16 +86,36 @@ const events = [
     signupUrl: "https://san-diego.aitinkerers.org/p/openclaw-global-unhackathon-san-diego"
   },
   {
-    title: "SDx OpenClaw Showcase",
-    when: "Sunday, March 1 - 2:00 PM to 5:00 PM PST",
-    where: "San Diego, CA (address after approval)",
+    title: "OpenClaw Deep Dives & Workshops",
+    when: "Sunday, March 1 - 10:00 AM - 1:00 PM",
+    where: "Sorrento Valley, San Diego",
     description:
-      "Show-and-tell for builders and claw-curious. Five-minute demos, real stories, no pitches. Mac-mini giveaways! Food & drinks provided.",
+      "Parallel workshop tracks: Advanced Agent Design (memory, orchestration), Business Automation (non-technical), and Security & Compliance (best practices for protecting your setup). Hosted by Cadre with SDx, DEVx, and AI Tinkerers.",
+    status: "Pending",
+    signupLabel: "Coming soon",
+    signupUrl: ""
+  },
+  {
+    title: "SDx OpenClaw Showcase",
+    when: "Sunday, March 1 - 2:00 PM - 5:00 PM",
+    where: "Sorrento Valley, San Diego",
+    description:
+      "Show-and-tell for builders and claw-curious. Five-minute demos, real stories, no pitches. Mac-mini giveaways! Food and drinks provided.",
     status: "Confirmed",
-    signupLabel: "Join Sunday showcase",
-    signupUrl: "https://example.com/openclaw-sunday"
+    signupLabel: "RSVP on Luma",
+    signupUrl: "https://luma.com/OpenclawSd"
   }
 ];
+
+// Group events by day for timeline display
+const eventsByDay = new Map();
+for (const event of events) {
+  const day = event.when.split(" - ")[0];
+  if (!eventsByDay.has(day)) {
+    eventsByDay.set(day, []);
+  }
+  eventsByDay.get(day).push(event);
+}
 ---
 
 <!doctype html>
@@ -112,6 +138,7 @@ const events = [
         <div class="container header-row">
           <p class="brand"><span class="accent">Open</span>Claw SD</p>
           <nav aria-label="Section navigation" class="top-nav">
+            <a href="#about">About</a>
             <a href="#events">Events</a>
             <a href="#communities">Communities</a>
             <a href="#sponsors">Sponsors</a>
@@ -123,15 +150,16 @@ const events = [
         <section class="hero">
           <div class="hero-bg" aria-hidden="true">
             <img src="/images/lobster_modified (2).png" alt="" class="hero-bg-img" />
-            <div class="hero-bg-overlay"></div>
             <div class="hero-bg-grain"></div>
           </div>
 
           <div class="hero-content container">
+            <div class="hero-headline">
+              <p class="hero-headline-location">San Diego</p>
+              <h1 class="hero-headline-title"><span class="accent">OpenClaw</span><br />Weekend</h1>
+            </div>
             <div class="hero-card">
-              <div class="hero-card-accent-bar" aria-hidden="true"></div>
-              <p class="hero-card-eyebrow">Feb 28 &ndash; Mar 1, 2026 &middot; San Diego</p>
-              <h1 class="hero-card-title">San Diego<br /><span class="accent">OpenClaw</span> Weekend</h1>
+              <p class="hero-card-date">Feb 28 &ndash; Mar 1, 2026</p>
               <p class="hero-card-desc">{weekend.summary}</p>
               <div class="hero-card-divider" aria-hidden="true"></div>
               <div class="hero-actions">
@@ -178,43 +206,40 @@ const events = [
 
             <div class="event-timeline">
               {
-                events.map((event) => (
-                  <article class="event-card glass-card">
-                    <div class="event-header">
-                      <div class="event-day-badge">
-                        <span class="event-day-label">
-                          {event.when.split(",")[0]}
-                        </span>
-                        <span class="event-day-num">
-                          {event.when.match(/\d+/)?.[0] || ""}
-                        </span>
-                      </div>
-                      <div class="event-header-text">
-                        <h3>{event.title}</h3>
-                        <span class={`status ${event.status === "Confirmed" ? "ok" : "pending"}`}>
-                          {event.status}
-                        </span>
-                      </div>
-                    </div>
+                Array.from(eventsByDay.entries()).map(([day, dayEvents]) => (
+                  <div class="timeline-day-group">
+                    <h3 class="timeline-day">{day}</h3>
+                    {dayEvents.map((event) => (
+                      <article class="event-card glass-card">
+                        <div class="event-header">
+                          <div class="event-header-text">
+                            <h3>{event.title}</h3>
+                            <span class={`status ${event.status === "Confirmed" ? "ok" : "pending"}`}>
+                              {event.status}
+                            </span>
+                          </div>
+                        </div>
 
-                    <div class="event-details">
-                      <div class="event-meta-badges">
-                        <span class="event-badge event-badge--time">{event.when.split(" - ").slice(1).join(" - ")}</span>
-                        <span class="event-badge event-badge--location">{event.where}</span>
-                      </div>
-                      <p class="event-description">{event.description}</p>
-                    </div>
+                        <div class="event-details">
+                          <div class="event-meta-badges">
+                            <span class="event-badge event-badge--time">{event.when.split(" - ").slice(1).join(" - ")}</span>
+                            <span class="event-badge event-badge--location">{event.where}</span>
+                          </div>
+                          <p class="event-description">{event.description}</p>
+                        </div>
 
-                    <div class="event-footer">
-                      {
-                        event.signupUrl ? (
-                          <a href={event.signupUrl} class="btn btn-primary event-cta" target="_blank" rel="noopener noreferrer">{event.signupLabel}</a>
-                        ) : (
-                          <p class="event-placeholder"><strong>Signup:</strong> {event.signupLabel}</p>
-                        )
-                      }
-                    </div>
-                  </article>
+                        <div class="event-footer">
+                          {
+                            event.signupUrl ? (
+                              <a href={event.signupUrl} class="btn btn-primary event-cta" target="_blank" rel="noopener noreferrer">{event.signupLabel}</a>
+                            ) : (
+                              <p class="event-placeholder"><strong>Signup:</strong> {event.signupLabel}</p>
+                            )
+                          }
+                        </div>
+                      </article>
+                    ))}
+                  </div>
                 ))
               }
             </div>
@@ -232,7 +257,8 @@ const events = [
                 communities.map((c) => (
                   <a href={c.url} target="_blank" rel="noopener noreferrer" class="community-card glass-card" style={`--card-accent: ${c.accent}`}>
                     <div class="community-logo">
-                      <img src={`/logos/${c.name.toLowerCase().replace(/\s+/g, "-")}.svg`} alt={`${c.name} logo`} />
+                      <img src={c.logo} alt={`${c.name} logo`} onerror={`this.style.display='none';this.nextElementSibling.style.display='flex'`} />
+                      <span class="logo-fallback" style={`display:none;background:${c.accent}`} aria-hidden="true">{c.name[0]}</span>
                     </div>
                     <div class="community-info">
                       <h3>{c.name}</h3>
@@ -258,7 +284,8 @@ const events = [
                 sponsors.map((s) => (
                   <a href={s.url} target="_blank" rel="noopener noreferrer" class="sponsor-card glass-card" style={`--card-accent: ${s.accent}`}>
                     <div class="sponsor-logo">
-                      <img src={`/logos/${s.name.toLowerCase().replace(/\s+/g, "-")}.svg`} alt={`${s.name} logo`} />
+                      <img src={s.logo} alt={`${s.name} logo`} onerror={`this.style.display='none';this.nextElementSibling.style.display='flex'`} />
+                      <span class="logo-fallback" style={`display:none;background:${s.accent}`} aria-hidden="true">{s.name[0]}</span>
                     </div>
                     <div class="sponsor-info">
                       <h3>{s.name}</h3>
@@ -283,7 +310,8 @@ const events = [
                 organizers.map((o) => (
                   <a href={o.url} target="_blank" rel="noopener noreferrer" class="sponsor-card glass-card" style={`--card-accent: ${o.accent}`}>
                     <div class="sponsor-logo">
-                      <img src={`/logos/${o.name.toLowerCase().replace(/\s+/g, "-")}.svg`} alt={`${o.name} logo`} />
+                      <img src={o.logo} alt={`${o.name} logo`} onerror={`this.style.display='none';this.nextElementSibling.style.display='flex'`} />
+                      <span class="logo-fallback" style={`display:none;background:${o.accent}`} aria-hidden="true">{o.name[0]}</span>
                     </div>
                     <div class="sponsor-info">
                       <h3>{o.name}</h3>
@@ -294,12 +322,25 @@ const events = [
               }
             </div>
 
-            <p class="support-note">
-              Questions? Reach out at <a href="mailto:max@backlandlabs.io">max@backlandlabs.io</a>
-            </p>
           </div>
         </section>
       </main>
+
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div class="footer-brand">
+            <p class="brand"><span class="accent">Open</span>Claw SD</p>
+            <p class="footer-tagline">Built for San Diego builders.</p>
+          </div>
+          <div class="footer-contact">
+            <p class="footer-heading">Questions?</p>
+            <a href="mailto:max@backlandlabs.io">max@backlandlabs.io</a>
+          </div>
+          <div class="footer-lobster">
+            <!-- Lobster image placeholder — Travis providing -->
+          </div>
+        </div>
+      </footer>
     </div>
   </body>
 </html>

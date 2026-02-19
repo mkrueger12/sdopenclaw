@@ -11,13 +11,9 @@
   --text: #111111;
   --muted: #5a5a6a;
   --line: rgba(0, 0, 0, 0.08);
-  --accent: #FF4F00;
-  --accent-hover: #E04500;
-  --accent-glow: rgba(255, 79, 0, 0.25);
-  --concrete-grey: #808080;
-  --cyan: #00FFFF;
-  --brand-red: #FF0000;
-
+  --accent: #D4520A;
+  --accent-hover: #B8440A;
+  --accent-glow: rgba(212, 82, 10, 0.2);
   /* ---- Surfaces ---- */
   --surface: rgba(255, 255, 255, 0.72);
   --surface-solid: #ffffff;
@@ -25,13 +21,13 @@
   --surface-elevated: rgba(255, 255, 255, 0.85);
 
   /* ---- Glass tokens ---- */
-  --glass-bg: rgba(255, 255, 255, 0.55);
-  --glass-bg-hover: rgba(255, 255, 255, 0.72);
-  --glass-border: rgba(255, 255, 255, 0.45);
+  --glass-bg: rgba(255, 255, 255, 0.82);
+  --glass-bg-hover: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(0, 0, 0, 0.08);
   --glass-border-subtle: rgba(0, 0, 0, 0.06);
   --glass-blur: 20px;
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06),
-                   0 1px 3px rgba(0, 0, 0, 0.04);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08),
+                   0 1px 3px rgba(0, 0, 0, 0.05);
   --glass-shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.1),
                          0 2px 6px rgba(0, 0, 0, 0.06);
 
@@ -126,7 +122,6 @@ img {
 /* ---- Layout ---- */
 
 .page-shell {
-  min-height: 100vh;
   overflow-x: hidden;
 }
 
@@ -164,30 +159,6 @@ img {
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   box-shadow: var(--glass-shadow);
-}
-
-/* ---- Image placeholders ---- */
-
-.image-placeholder {
-  aspect-ratio: 16 / 9;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0.06) 100%);
-  border: 1px dashed var(--glass-border-subtle);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--muted);
-  font-size: var(--text-sm);
-  font-weight: 500;
-  overflow: hidden;
-}
-
-.image-placeholder--square {
-  aspect-ratio: 1;
-}
-
-.image-placeholder--portrait {
-  aspect-ratio: 3 / 4;
 }
 
 /* ============================================================
@@ -292,10 +263,6 @@ img {
   object-position: 75% 20%;
 }
 
-.hero-bg-overlay {
-  display: none;
-}
-
 .hero-bg-grain {
   position: absolute;
   inset: 0;
@@ -314,7 +281,8 @@ img {
   padding-bottom: var(--space-2xl);
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-card {
@@ -336,21 +304,59 @@ img {
 }
 
 .hero-card:hover {
-  border-color: #cc5500;
+  border-color: #B8440A;
   transform: translateY(-3px);
   box-shadow:
     0 40px 120px rgba(0, 0, 0, 0.55),
     0 16px 50px rgba(0, 0, 0, 0.35),
     0 6px 20px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 0 24px rgba(204, 85, 0, 0.2);
+    0 0 24px rgba(184, 68, 10, 0.2);
 }
 
-.hero-card-accent-bar {
-  display: none;
+/* ---- Floating hero headline ---- */
+
+.hero-headline {
+  text-align: center;
+  margin-bottom: var(--space-lg);
 }
 
-.hero-card-eyebrow {
+.hero-headline-location {
+  font-family: "DM Sans", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: var(--space-sm);
+}
+
+.hero-headline-location::before {
+  content: "\2022";
+  margin-right: 0.5em;
+  color: var(--accent);
+}
+
+.hero-headline-title {
+  font-family: "Red Hat Display", Impact, "Arial Black", sans-serif;
+  font-size: clamp(2.6rem, 9vw, 5.5rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+  max-width: none;
+  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
+}
+
+.hero-headline-title .accent {
+  color: var(--accent);
+  text-shadow: 0 0 50px rgba(212, 82, 10, 0.35);
+}
+
+/* ---- Hero card date ---- */
+
+.hero-card-date {
   font-family: "DM Sans", "Helvetica Neue", Helvetica, sans-serif;
   font-size: var(--text-xs);
   font-weight: 700;
@@ -358,23 +364,6 @@ img {
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: var(--space-md);
-}
-
-.hero-card-title {
-  font-family: "Anton", Impact, "Arial Black", sans-serif;
-  font-size: clamp(2rem, 5.5vw, 2.8rem);
-  font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: #ffffff;
-  margin-bottom: var(--space-lg);
-  max-width: none;
-}
-
-.hero-card-title .accent {
-  color: var(--accent);
-  text-shadow: 0 0 40px rgba(255, 79, 0, 0.3);
 }
 
 .hero-card-desc {
@@ -657,11 +646,14 @@ h2 .accent {
    ============================================================ */
 
 .section-events {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 79, 0, 0.03) 0%,
-    rgba(244, 244, 246, 0) 100%
-  );
+  background:
+    linear-gradient(
+      180deg,
+      rgba(212, 82, 10, 0.06) 0%,
+      rgba(212, 82, 10, 0.02) 60%,
+      rgba(244, 244, 246, 0) 100%
+    );
+  border-top: 3px solid var(--accent);
 }
 
 .event-timeline {
@@ -669,12 +661,32 @@ h2 .accent {
   gap: var(--space-xl);
   grid-template-columns: 1fr;
   margin-top: var(--space-lg);
+  max-width: 48rem;
+}
+
+/* ---- Timeline day groups ---- */
+
+.timeline-day-group {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.timeline-day {
+  font-family: "Red Hat Display", Impact, "Arial Black", sans-serif;
+  font-size: var(--text-sm);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--line);
 }
 
 .event-card {
   display: grid;
   gap: var(--space-md);
   padding: var(--space-xl);
+  border-left: 3px solid var(--accent);
 }
 
 /* ---- Event header: day badge + title ---- */
@@ -817,8 +829,8 @@ h2 .accent {
 }
 
 .event-placeholder {
-  background: rgba(255, 79, 0, 0.07);
-  border: 1px dashed rgba(255, 79, 0, 0.3);
+  background: rgba(212, 82, 10, 0.07);
+  border: 1px dashed rgba(212, 82, 10, 0.3);
   border-radius: var(--radius-sm);
   color: var(--accent-hover);
   font-size: var(--text-sm);
@@ -859,8 +871,8 @@ h2 .accent {
 }
 
 .community-logo {
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 4.2rem;
+  height: 4.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -919,11 +931,7 @@ h2 .accent {
    ============================================================ */
 
 .section-sponsors {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 79, 0, 0.03) 0%,
-    rgba(244, 244, 246, 0) 100%
-  );
+  background: var(--bg);
 }
 
 .sponsor-grid {
@@ -948,8 +956,8 @@ h2 .accent {
 }
 
 .sponsor-logo {
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 4rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1002,24 +1010,19 @@ h2 .accent {
   color: var(--muted);
 }
 
-.support-note {
-  margin-top: var(--space-xl);
-  color: var(--muted);
-  font-size: var(--text-base);
-}
+/* ---- Logo fallback (text initial) ---- */
 
-.support-note a {
-  color: var(--accent);
-  font-weight: 600;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255, 79, 0, 0.3);
-  transition: border-color var(--transition-fast),
-              color var(--transition-fast);
-}
-
-.support-note a:hover {
-  color: var(--accent-hover);
-  border-color: var(--accent-hover);
+.logo-fallback {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-family: "Red Hat Display", Impact, "Arial Black", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 /* ============================================================
@@ -1034,6 +1037,66 @@ h2 .accent {
 }
 
 /* ============================================================
+   FOOTER
+   ============================================================ */
+
+.site-footer {
+  background: #111;
+  color: rgba(255, 255, 255, 0.6);
+  padding: var(--space-2xl) 0;
+}
+
+.footer-grid {
+  display: grid;
+  gap: var(--space-xl);
+  grid-template-columns: 1fr;
+}
+
+.site-footer .brand {
+  color: #fff;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-sm);
+}
+
+.site-footer .brand .accent {
+  color: var(--accent);
+}
+
+.footer-tagline {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.footer-heading {
+  font-family: "Red Hat Display", Impact, "Arial Black", sans-serif;
+  font-size: var(--text-sm);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: var(--space-xs);
+}
+
+.footer-contact a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(212, 82, 10, 0.3);
+  transition: border-color var(--transition-fast),
+              color var(--transition-fast);
+}
+
+.footer-contact a:hover {
+  color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.footer-lobster {
+  min-height: 2rem;
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 
@@ -1041,15 +1104,6 @@ h2 .accent {
   .hero-card {
     padding: var(--space-lg);
     border-radius: var(--radius-lg);
-  }
-
-  .hero-card-accent-bar {
-    left: var(--space-lg);
-    right: var(--space-lg);
-  }
-
-  .hero-card-title {
-    font-size: clamp(1.8rem, 7vw, 2.2rem);
   }
 }
 
@@ -1061,16 +1115,20 @@ h2 .accent {
   .hero-content {
     padding-top: 0;
     padding-bottom: 0;
-    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .hero-headline {
+    text-align: left;
+  }
+
+  .hero-headline-title {
+    font-size: clamp(3.5rem, 5.5vw, 5.5rem);
   }
 
   .hero-card {
     max-width: 26rem;
-    padding: var(--space-2xl) var(--space-xl) var(--space-xl);
-  }
-
-  .hero-card-title {
-    font-size: clamp(2.2rem, 3vw, 3rem);
+    padding: var(--space-xl) var(--space-xl) var(--space-lg);
   }
 
   .hero-bg-img {
@@ -1080,10 +1138,6 @@ h2 .accent {
   .about-layout {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-2xl);
-  }
-
-  .event-timeline {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .community-grid {
@@ -1104,20 +1158,21 @@ h2 .accent {
   .organizer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr auto;
+    align-items: start;
+  }
 }
 
 @media (min-width: 72rem) {
   .hero-card {
     max-width: 30rem;
-    padding: var(--space-2xl);
+    padding: var(--space-2xl) var(--space-xl) var(--space-xl);
   }
 
-  .hero-card-title {
-    font-size: 3.2rem;
-  }
-
-  .event-timeline {
-    max-width: 56rem;
+  .hero-headline-title {
+    font-size: 5.5rem;
   }
 }
 
