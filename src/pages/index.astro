@@ -2,7 +2,7 @@
 import "../styles/global.css";
 
 const weekend = {
-  title: "San Diego OpenClaw Weekend",
+  title: "OpenClaw SD Weekend",
   dates: "February 28 - March 1, 2026",
   location: "San Diego, California",
   summary:
@@ -24,7 +24,7 @@ const communities = [
     description:
       "The next-gen startup community for AI builders. 1000+ members, 50+ events, 15+ startups launched.",
     url: "https://www.sdx.community/",
-    accent: "#F26522"
+    accent: "#FF4F00"
   }
 ];
 
@@ -102,7 +102,7 @@ const events = [
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Red+Hat+Display:wght@700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600;700&family=Red+Hat+Display:wght@700;800;900&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -110,7 +110,7 @@ const events = [
     <div class="page-shell">
       <header class="site-header">
         <div class="container header-row">
-          <p class="brand"><span class="accent">Open</span>Claw San Diego</p>
+          <p class="brand"><span class="accent">Open</span>Claw SD</p>
           <nav aria-label="Section navigation" class="top-nav">
             <a href="#events">Events</a>
             <a href="#communities">Communities</a>
@@ -121,26 +121,28 @@ const events = [
 
       <main>
         <section class="hero">
-          <div class="container hero-grid">
-            <div>
-              <p class="eyebrow">February 28 - March 1, 2026</p>
-              <h1>San Diego <span class="accent">OpenClaw</span> Weekend</h1>
-              <p class="hero-lead">{weekend.summary}</p>
-              <div class="hero-meta">
-                <p><strong>Dates:</strong> {weekend.dates}</p>
-                <p><strong>Location:</strong> {weekend.location}</p>
-              </div>
+          <div class="hero-bg" aria-hidden="true">
+            <img src="/images/heroimage.png" alt="" class="hero-bg-img" />
+            <div class="hero-bg-overlay"></div>
+            <div class="hero-bg-grain"></div>
+          </div>
+
+          <div class="hero-content container">
+            <div class="hero-card">
+              <div class="hero-card-accent-bar" aria-hidden="true"></div>
+              <p class="hero-card-eyebrow">Feb 28 &ndash; Mar 1, 2026 &middot; San Diego</p>
+              <h1 class="hero-card-title">San Diego<br /><span class="accent">OpenClaw</span> Weekend</h1>
+              <p class="hero-card-desc">{weekend.summary}</p>
+              <div class="hero-card-divider" aria-hidden="true"></div>
               <div class="hero-actions">
-                <a class="btn btn-primary" href="#events">Explore events</a>
-                <a class="btn btn-secondary" href="#communities">Communities</a>
+                <a class="btn btn-primary" href="#events">Explore Events</a>
+                <a class="btn btn-ghost" href="#communities">Communities</a>
               </div>
             </div>
-            <aside class="hero-note" aria-label="Builder note">
-              <h2>For builders</h2>
-              <p>
-                This weekend is for people who want to build with OpenClaw, hack on it, and ship things.
-              </p>
-            </aside>
+          </div>
+
+          <div class="hero-scroll-hint" aria-hidden="true">
+            <span></span>
           </div>
         </section>
 
@@ -167,27 +169,44 @@ const events = [
               <h2>Weekend <span class="accent">schedule</span></h2>
             </div>
 
-            <div class="event-grid">
+            <div class="event-timeline">
               {
                 events.map((event) => (
-                  <article class="event-card">
-                    <div class="event-top">
-                      <h3>{event.title}</h3>
-                      <span class={`status ${event.status === "Confirmed" ? "ok" : "pending"}`}>
-                        {event.status}
-                      </span>
+                  <article class="event-card glass-card">
+                    <div class="event-header">
+                      <div class="event-day-badge">
+                        <span class="event-day-label">
+                          {event.when.split(",")[0]}
+                        </span>
+                        <span class="event-day-num">
+                          {event.when.match(/\d+/)?.[0] || ""}
+                        </span>
+                      </div>
+                      <div class="event-header-text">
+                        <h3>{event.title}</h3>
+                        <span class={`status ${event.status === "Confirmed" ? "ok" : "pending"}`}>
+                          {event.status}
+                        </span>
+                      </div>
                     </div>
-                    <p class="event-detail"><strong>When:</strong> {event.when}</p>
-                    <p class="event-detail"><strong>Where:</strong> {event.where}</p>
-                    <p class="event-description">{event.description}</p>
 
-                    {
-                      event.signupUrl ? (
-                        <a href={event.signupUrl} class="btn btn-primary event-cta">{event.signupLabel}</a>
-                      ) : (
-                        <p class="event-placeholder"><strong>Signup:</strong> {event.signupLabel}</p>
-                      )
-                    }
+                    <div class="event-details">
+                      <div class="event-meta-badges">
+                        <span class="event-badge event-badge--time">{event.when.split(" - ").slice(1).join(" - ")}</span>
+                        <span class="event-badge event-badge--location">{event.where}</span>
+                      </div>
+                      <p class="event-description">{event.description}</p>
+                    </div>
+
+                    <div class="event-footer">
+                      {
+                        event.signupUrl ? (
+                          <a href={event.signupUrl} class="btn btn-primary event-cta" target="_blank" rel="noopener noreferrer">{event.signupLabel}</a>
+                        ) : (
+                          <p class="event-placeholder"><strong>Signup:</strong> {event.signupLabel}</p>
+                        )
+                      }
+                    </div>
                   </article>
                 ))
               }
@@ -204,8 +223,10 @@ const events = [
             <div class="community-grid">
               {
                 communities.map((c) => (
-                  <a href={c.url} target="_blank" rel="noopener noreferrer" class="community-card" style={`--card-accent: ${c.accent}`}>
-                    <div class="community-badge" aria-hidden="true">{c.name.charAt(0)}</div>
+                  <a href={c.url} target="_blank" rel="noopener noreferrer" class="community-card glass-card" style={`--card-accent: ${c.accent}`}>
+                    <div class="community-logo">
+                      <img src={`/logos/${c.name.toLowerCase().replace(/\s+/g, "-")}.svg`} alt={`${c.name} logo`} />
+                    </div>
                     <div class="community-info">
                       <h3>{c.name}</h3>
                       <p class="community-tagline">{c.tagline}</p>
@@ -228,8 +249,10 @@ const events = [
             <div class="sponsor-grid">
               {
                 sponsors.map((s) => (
-                  <a href={s.url} target="_blank" rel="noopener noreferrer" class="sponsor-card" style={`--card-accent: ${s.accent}`}>
-                    <div class="sponsor-mark" aria-hidden="true">{s.name.charAt(0)}</div>
+                  <a href={s.url} target="_blank" rel="noopener noreferrer" class="sponsor-card glass-card" style={`--card-accent: ${s.accent}`}>
+                    <div class="sponsor-logo">
+                      <img src={`/logos/${s.name.toLowerCase().replace(/\s+/g, "-")}.svg`} alt={`${s.name} logo`} />
+                    </div>
                     <div class="sponsor-info">
                       <h3>{s.name}</h3>
                       <p>{s.description}</p>
@@ -251,8 +274,10 @@ const events = [
             <div class="organizer-grid">
               {
                 organizers.map((o) => (
-                  <a href={o.url} target="_blank" rel="noopener noreferrer" class="sponsor-card" style={`--card-accent: ${o.accent}`}>
-                    <div class="sponsor-mark" aria-hidden="true">{o.name.charAt(0)}</div>
+                  <a href={o.url} target="_blank" rel="noopener noreferrer" class="sponsor-card glass-card" style={`--card-accent: ${o.accent}`}>
+                    <div class="sponsor-logo">
+                      <img src={`/logos/${o.name.toLowerCase().replace(/\s+/g, "-")}.svg`} alt={`${o.name} logo`} />
+                    </div>
                     <div class="sponsor-info">
                       <h3>{o.name}</h3>
                       <p>{o.description}</p>
