@@ -108,6 +108,7 @@ const events = [
     where: "1495 Pacific Hwy #300, San Diego, CA 92101",
     description:
       "Join the Claw Club and get your OpenClaw journey started. A hands-on workshop covering setup, hosting, models, channels, and everything you need to hit the ground running. By the end of the night, you'll have the power of OpenClaw at your fingertips.",
+    image: "/images/events/claw-club.png",
     status: "Confirmed",
     signupLabel: "RSVP on DEVx",
     signupUrl: "https://devx.network/events/evt-Dzpa16BGEiR3NGk"
@@ -118,16 +119,18 @@ const events = [
     where: "Rancho Bernardo, San Diego",
     description:
       "A synchronized build session across 24 AI Tinkerers cities worldwide. Hands-on coding with OpenClaw/ClawdBot -- no pitches, no panels. Pizza, snacks, and drinks provided. Mac Mini giveaway for the best hack.",
+    image: "/images/events/unhackathon.jpg",
     status: "Confirmed",
     signupLabel: "RSVP on AI Tinkerers",
     signupUrl: "https://san-diego.aitinkerers.org/p/openclaw-global-unhackathon-san-diego"
   },
   {
-    title: "OpenClaw Deep Dives & Workshops",
+    title: "SDx Deep Dives",
     when: "Sunday, March 1 - 10:00 AM - 1:00 PM",
     where: "Sorrento Valley, San Diego",
     description:
       "Parallel workshop tracks: Advanced Agent Design (memory, orchestration), Business Automation (non-technical), and Security & Compliance (best practices for protecting your setup). Hosted by Cadre with SDx, DEVx, and AI Tinkerers.",
+    image: "/images/events/unhackathon.jpg",
     status: "Pending",
     signupLabel: "Coming soon",
     signupUrl: ""
@@ -138,6 +141,7 @@ const events = [
     where: "Sorrento Valley, San Diego",
     description:
       "Show-and-tell for builders and claw-curious. Five-minute demos, real stories, no pitches. Mac Mini giveaway for the best showcase. Food and drinks provided.",
+    image: "/images/events/showcase.png",
     status: "Confirmed",
     signupLabel: "RSVP on Luma",
     signupUrl: "https://luma.com/OpenclawSd"
@@ -253,31 +257,38 @@ for (const event of events) {
                     <h3 class="timeline-day">{day}</h3>
                     {dayEvents.map((event) => (
                       <article class="event-card glass-card">
-                        <div class="event-header">
-                          <div class="event-header-text">
-                            <h3 set:html={brandName(event.title)} />
-                            <span class={`status ${event.status === "Confirmed" ? "ok" : "pending"}`}>
-                              {event.status}
-                            </span>
+                        {event.image && (
+                          <div class="event-image">
+                            <img src={event.image} alt={event.title} />
                           </div>
-                        </div>
-
-                        <div class="event-details">
-                          <div class="event-meta-badges">
-                            <span class="event-badge event-badge--time">{event.when.split(" - ").slice(1).join(" - ")}</span>
-                            <span class="event-badge event-badge--location">{event.where}</span>
+                        )}
+                        <div class="event-body">
+                          <div class="event-header">
+                            <div class="event-header-text">
+                              <h3 set:html={brandName(event.title)} />
+                              <span class={`status ${event.status === "Confirmed" ? "ok" : "pending"}`}>
+                                {event.status}
+                              </span>
+                            </div>
                           </div>
-                          <p class="event-description">{event.description}</p>
-                        </div>
 
-                        <div class="event-footer">
-                          {
-                            event.signupUrl ? (
-                              <a href={event.signupUrl} class="btn btn-primary event-cta" target="_blank" rel="noopener noreferrer">{event.signupLabel}</a>
-                            ) : (
-                              <p class="event-placeholder"><strong>Signup:</strong> {event.signupLabel}</p>
-                            )
-                          }
+                          <div class="event-details">
+                            <div class="event-meta-badges">
+                              <span class="event-badge event-badge--time">{event.when.split(" - ").slice(1).join(" - ")}</span>
+                              <span class="event-badge event-badge--location">{event.where}</span>
+                            </div>
+                            <p class="event-description">{event.description}</p>
+                          </div>
+
+                          <div class="event-footer">
+                            {
+                              event.signupUrl ? (
+                                <a href={event.signupUrl} class="btn btn-primary event-cta" target="_blank" rel="noopener noreferrer">{event.signupLabel}</a>
+                              ) : (
+                                <p class="event-placeholder"><strong>Signup:</strong> {event.signupLabel}</p>
+                              )
+                            }
+                          </div>
                         </div>
                       </article>
                     ))}
