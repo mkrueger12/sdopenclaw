@@ -99,7 +99,9 @@ const organizers = [
 ];
 
 const brandName = (name: string) =>
-  name.replace(/DEVxSD/g, 'DEV<span class="lowercase">x</span>SD');
+  name
+    .replace(/DEVxSD/g, 'DEV<span class="lowercase">x</span>SD')
+    .replace(/\bSDx\b/g, 'SD<span class="lowercase">x</span>');
 
 const events = [
   {
@@ -182,7 +184,7 @@ for (const event of events) {
     <div class="page-shell">
       <header class="site-header">
         <div class="container header-row">
-          <p class="brand"><img src="/images/lobster_side_view.png" alt="" class="brand-logo" /><span class="accent">Open</span>Claw SD</p>
+          <p class="brand"><img src="/images/lobster_side_view.png" alt="" class="brand-logo" /><span class="brand-text">Open<span class="accent">Claw</span> SD</span></p>
           <nav aria-label="Section navigation" class="top-nav">
             <a href="#about">About</a>
             <a href="#events">Events</a>
@@ -202,7 +204,7 @@ for (const event of events) {
           <div class="hero-content container">
             <div class="hero-headline">
               <p class="hero-headline-location">San Diego</p>
-              <h1 class="hero-headline-title"><span class="accent">OpenClaw</span><br />Weekend</h1>
+              <h1 class="hero-headline-title">Open<span class="accent">Claw</span><br />Weekend</h1>
             </div>
             <div class="hero-card">
               <p class="hero-card-date">Feb 28 &ndash; Mar 1, 2026</p>
@@ -383,7 +385,7 @@ for (const event of events) {
       <footer class="site-footer">
         <div class="container footer-grid">
           <div class="footer-brand">
-            <p class="brand"><span class="accent">Open</span>Claw SD</p>
+            <p class="brand">Open<span class="accent">Claw</span> SD</p>
             <p class="footer-tagline">Built for San Diego builders.</p>
           </div>
           <div class="footer-contact">
