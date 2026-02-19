@@ -188,6 +188,15 @@ img {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-logo {
+  height: 2rem;
+  width: auto;
+  display: block;
 }
 
 .brand .accent {
@@ -684,9 +693,31 @@ h2 .accent {
 
 .event-card {
   display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding: 0;
+  border-left: 3px solid var(--accent);
+  overflow: hidden;
+}
+
+.event-image {
+  width: 100%;
+  max-height: 16rem;
+  overflow: hidden;
+}
+
+.event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.event-body {
+  display: grid;
   gap: var(--space-md);
   padding: var(--space-xl);
-  border-left: 3px solid var(--accent);
 }
 
 /* ---- Event header: day badge + title ---- */
