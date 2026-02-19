@@ -895,6 +895,10 @@ h2 .accent {
   margin-bottom: 0.15rem;
 }
 
+.lowercase {
+  text-transform: lowercase;
+}
+
 .community-tagline {
   color: var(--card-accent, var(--accent));
   font-family: "DM Sans", "Helvetica Neue", Helvetica, sans-serif;
@@ -1026,14 +1030,82 @@ h2 .accent {
 }
 
 /* ============================================================
-   ORGANIZERS
+   ORGANIZERS — Person Cards
    ============================================================ */
 
 .organizer-grid {
   display: grid;
   gap: var(--space-lg);
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: var(--space-lg);
+}
+
+.person-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-xl) var(--space-lg);
+  border-radius: var(--radius-lg);
+}
+
+.person-photo {
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: var(--space-md);
+  border: 2.5px solid var(--card-accent, var(--line));
+  flex-shrink: 0;
+}
+
+.person-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.person-photo-fallback {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Red Hat Display", Impact, "Arial Black", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.person-info h3 {
+  font-size: var(--text-lg);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.2rem;
+}
+
+.person-org {
+  display: inline-block;
+  color: var(--card-accent, var(--accent));
+  font-family: "DM Sans", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-bottom: var(--space-sm);
+  transition: opacity var(--transition-fast);
+}
+
+.person-org:hover {
+  opacity: 0.75;
+}
+
+.person-bio {
+  color: var(--muted);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  max-width: 28ch;
+  margin: 0 auto;
 }
 
 /* ============================================================
@@ -1156,7 +1228,7 @@ h2 .accent {
   }
 
   .organizer-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .footer-grid {

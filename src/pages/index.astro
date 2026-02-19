@@ -64,20 +64,41 @@ const sponsors = [
 
 const organizers = [
   {
-    name: "Backland Labs",
-    logo: "/logos/backlandlabslogo.jpg",
-    description: "AI consulting, workflow automation, and builder events in San Diego.",
-    url: "https://www.backlandlabs.io/",
+    name: "Max Krueger",
+    photo: "/organizers/Headshots/Max.jpeg",
+    org: "Backland Labs",
+    orgUrl: "https://www.backlandlabs.io/",
+    bio: "AI consulting and workflow automation. Runs builder events across San Diego.",
     accent: "#111111"
   },
   {
-    name: "AuraPath",
-    logo: "/logos/aurapath.svg",
-    description: "AI implementation consulting. Custom AI solutions that work.",
-    url: "https://www.aurapath.us/",
+    name: "Travis Johnson",
+    photo: "/organizers/Headshots/Travis.jpeg",
+    org: "AuraPath",
+    orgUrl: "https://www.aurapath.us/",
+    bio: "AI implementation consulting. Building custom AI solutions that actually work.",
     accent: "#111111"
+  },
+  {
+    name: "Chad Lorhil",
+    photo: "/organizers/Headshots/Chad.jpeg",
+    org: "SDx / Cadre AI",
+    orgUrl: "https://www.sdx.community/",
+    bio: "Building San Diego's next-gen AI community. Strategy and execution for builders.",
+    accent: "#FF4F00"
+  },
+  {
+    name: "Sam Holmes",
+    photo: "/organizers/Headshots/Sam.jpeg",
+    org: "DEVxSD",
+    orgUrl: "https://devx.network",
+    bio: "Developer community organizer. Events, open-source, and hands-on coding in San Diego.",
+    accent: "#7770ff"
   }
 ];
+
+const brandName = (name: string) =>
+  name.replace(/DEVxSD/g, 'DEV<span class="lowercase">x</span>SD');
 
 const events = [
   {
@@ -228,7 +249,7 @@ for (const event of events) {
                       <article class="event-card glass-card">
                         <div class="event-header">
                           <div class="event-header-text">
-                            <h3>{event.title}</h3>
+                            <h3 set:html={brandName(event.title)} />
                             <span class={`status ${event.status === "Confirmed" ? "ok" : "pending"}`}>
                               {event.status}
                             </span>
@@ -276,7 +297,7 @@ for (const event of events) {
                       <span class="logo-fallback" style={`display:none;background:${c.accent}`} aria-hidden="true">{c.name[0]}</span>
                     </div>
                     <div class="community-info">
-                      <h3>{c.name}</h3>
+                      <h3 set:html={brandName(c.name)} />
                       <p class="community-tagline">{c.tagline}</p>
                       <p class="community-desc">{c.description}</p>
                     </div>
@@ -316,23 +337,24 @@ for (const event of events) {
         <section id="organizers" class="section">
           <div class="container">
             <div class="section-heading">
-              <p class="eyebrow">Organized by</p>
+              <p class="eyebrow">The people</p>
               <h2>Weekend <span class="accent">organizers</span></h2>
             </div>
 
             <div class="organizer-grid">
               {
                 organizers.map((o) => (
-                  <a href={o.url} target="_blank" rel="noopener noreferrer" class="sponsor-card glass-card" style={`--card-accent: ${o.accent}`}>
-                    <div class="sponsor-logo">
-                      <img src={o.logo} alt={`${o.name} logo`} onerror={`this.style.display='none';this.nextElementSibling.style.display='flex'`} />
-                      <span class="logo-fallback" style={`display:none;background:${o.accent}`} aria-hidden="true">{o.name[0]}</span>
+                  <div class="person-card glass-card" style={`--card-accent: ${o.accent}`}>
+                    <div class="person-photo">
+                      <img src={o.photo} alt={o.name} onerror={`this.style.display='none';this.nextElementSibling.style.display='flex'`} />
+                      <span class="person-photo-fallback" style={`display:none;background:${o.accent}`} aria-hidden="true">{o.name.split(' ').map(n => n[0]).join('')}</span>
                     </div>
-                    <div class="sponsor-info">
+                    <div class="person-info">
                       <h3>{o.name}</h3>
-                      <p>{o.description}</p>
+                      <a href={o.orgUrl} target="_blank" rel="noopener noreferrer" class="person-org" set:html={brandName(o.org)} />
+                      <p class="person-bio">{o.bio}</p>
                     </div>
-                  </a>
+                  </div>
                 ))
               }
             </div>
