@@ -427,6 +427,10 @@ h2 .accent {
   margin-bottom: 0.2rem;
 }
 
+.lowercase {
+  text-transform: lowercase;
+}
+
 .community-tagline {
   color: var(--card-accent, var(--accent));
   font-family: "DM Sans", "Helvetica Neue", Helvetica, sans-serif;

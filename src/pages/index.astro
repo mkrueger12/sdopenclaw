@@ -66,6 +66,9 @@ const organizers = [
   }
 ];
 
+const brandName = (name: string) =>
+  name.replace(/DEVxSD/g, 'DEV<span class="lowercase">x</span>SD');
+
 const events = [
   {
     title: "DEVxSD Claw Club",
@@ -180,7 +183,7 @@ const events = [
                 events.map((event) => (
                   <article class="event-card">
                     <div class="event-top">
-                      <h3>{event.title}</h3>
+                      <h3 set:html={brandName(event.title)} />
                       <span class={`status ${event.status === "Confirmed" ? "ok" : "pending"}`}>
                         {event.status}
                       </span>
@@ -215,7 +218,7 @@ const events = [
                   <a href={c.url} target="_blank" rel="noopener noreferrer" class="community-card" style={`--card-accent: ${c.accent}`}>
                     <div class="community-badge" aria-hidden="true">{c.name.charAt(0)}</div>
                     <div class="community-info">
-                      <h3>{c.name}</h3>
+                      <h3 set:html={brandName(c.name)} />
                       <p class="community-tagline">{c.tagline}</p>
                       <p class="community-desc">{c.description}</p>
                     </div>
