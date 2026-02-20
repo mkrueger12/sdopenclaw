@@ -688,6 +688,8 @@ h2 .accent {
 }
 
 .who-card {
+  display: flex;
+  flex-direction: column;
   padding: var(--space-lg) var(--space-xl);
   border-left: 3px solid var(--accent);
   border-radius: var(--radius-md);
@@ -713,22 +715,6 @@ h2 .accent {
   line-height: 1.6;
 }
 
-.who-outcome .inline-link {
-  position: relative;
-  z-index: 1;
-}
-
-a.who-card {
-  text-decoration: none;
-  color: var(--text);
-  display: flex;
-  flex-direction: column;
-}
-
-a.who-card:hover .who-link {
-  color: var(--accent);
-}
-
 .who-link {
   font-family: "Red Hat Display", Impact, "Arial Black", sans-serif;
   font-size: var(--text-xs);
@@ -736,9 +722,14 @@ a.who-card:hover .who-link {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
+  text-decoration: none;
   margin-top: auto;
   padding-top: var(--space-sm);
   transition: color var(--transition-fast);
+}
+
+.who-link:hover {
+  color: var(--accent);
 }
 
 /* ============================================================
@@ -1370,7 +1361,7 @@ a.who-card:hover .who-link {
   }
 
   .hero-stats-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .about-layout {
@@ -1628,6 +1619,28 @@ a.who-card:hover .who-link {
     opacity: 1 !important;
     translate: none !important;
   }
+}
+
+/* ---- Skip-to-content link ---- */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-md);
+  z-index: 200;
+  background: var(--accent);
+  color: #fff;
+  font-family: "DM Sans", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-sm);
 }
 
 /* Focus-visible for keyboard navigation */
