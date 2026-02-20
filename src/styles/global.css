@@ -816,16 +816,21 @@ h2 .accent {
 }
 
 .event-timeline {
+  --tl-dot: 10px;
+  /* Mobile: dot center offset from group left edge */
+  --tl-dot-x: -1rem;
+  position: relative;
   display: grid;
   gap: var(--space-xl);
   grid-template-columns: 1fr;
   margin-top: var(--space-lg);
-  max-width: 48rem;
+  padding-left: calc(var(--tl-dot) + 1.25rem);
 }
 
 /* ---- Timeline day groups ---- */
 
 .timeline-day-group {
+  position: relative;
   display: grid;
   gap: var(--space-md);
 }
@@ -837,8 +842,89 @@ h2 .accent {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
-  padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--line);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Dot — positioned on the vertical line to the left of text.
+   Uses --tl-dot-x (dot center from group left) for alignment with line. */
+.timeline-day::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--tl-dot-x) - var(--tl-dot) / 2);
+  top: 50%;
+  width: var(--tl-dot);
+  height: var(--tl-dot);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--bg);
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+/* Line — on `.timeline-day-group` so that percentage heights resolve against
+   the group, not the tiny day-label element. */
+.timeline-day-group::after {
+  content: "";
+  position: absolute;
+  /* Center on the dot using the shared --tl-dot-x variable */
+  left: calc(var(--tl-dot-x) - 1px);
+  top: 0;
+  width: 2px;
+  background: var(--line);
+  pointer-events: none;
+  z-index: 1;
+  /* Span full group height + gap to next group */
+  height: calc(100% + var(--space-xl));
+}
+
+/* Last day-group: line only spans the group itself */
+.timeline-day-group:last-child::after {
+  height: 100%;
+}
+
+/* Desktop: timeline with day label column on left, line, then cards */
+@media (min-width: 52rem) {
+  .event-timeline {
+    --tl-label-w: clamp(12rem, 18vw, 14rem);
+    --tl-gap: clamp(1.5rem, 2vw, 2rem);
+    /* Desktop: dot center is centered in the gap */
+    --tl-dot-x: calc(-1 * var(--tl-gap) / 2);
+    padding-left: calc(var(--tl-label-w) + var(--tl-gap));
+  }
+
+  .timeline-day {
+    font-size: clamp(0.65rem, 1.1vw, var(--text-sm));
+  }
+
+  .timeline-day-group {
+    z-index: 1;
+  }
+
+  /* Day label: absolute-positioned in the left column.
+     Positioned so its right edge has 0.75rem spacing from the dot. */
+  .timeline-day {
+    position: absolute;
+    right: calc(100% - var(--tl-dot-x) + var(--tl-dot) / 2 + 0.75rem);
+    top: var(--space-lg);
+    text-align: right;
+    white-space: nowrap;
+    justify-content: flex-end;
+    width: auto;
+  }
+
+  /* Dot — desktop: positioned from .timeline-day using --tl-dot-x.
+     Since .timeline-day is absolute, ::before left is relative to .timeline-day,
+     not the group. We need to override to use right-based positioning. */
+  .timeline-day::before {
+    left: auto;
+    right: calc(-0.75rem - var(--tl-dot));
+    transform: translateY(-50%);
+  }
+
+  /* Line — desktop: uses same --tl-dot-x via inherited rule, no override needed */
 }
 
 .event-card {
@@ -846,8 +932,8 @@ h2 .accent {
   grid-template-columns: 1fr;
   gap: 0;
   padding: 0;
-  border-left: 3px solid var(--accent);
   position: relative;
+  overflow: hidden;
 }
 
 .event-image {
@@ -1567,19 +1653,6 @@ h2 .accent {
   50% {
     box-shadow: 0 0 0 6px rgba(212, 82, 10, 0);
   }
-}
-
-.event-card::before {
-  content: "";
-  position: absolute;
-  left: -5px;
-  top: 1.5rem;
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  z-index: 1;
-  animation: pulse-dot 2.5s ease-in-out infinite;
 }
 
 /* ---- Organizer photo effects ---- */
