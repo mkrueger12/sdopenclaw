@@ -69,7 +69,7 @@ const organizers = [
     url: "https://www.backlandlabs.io/",
   },
   {
-    name: "Chad Lorhil",
+    name: "Chad Lohrli",
     org: "SDx / Cadre AI",
     url: "https://www.sdx.community/",
   },
