@@ -265,22 +265,13 @@ for (const event of events) {
                           </div>
                         )}
                         <div class="event-body">
-                          <div class="event-header">
-                            <div class="event-header-text">
-                              <h3 set:html={brandName(event.title)} />
-                              <span class={`status ${event.status === "Confirmed" ? "ok" : "pending"}`}>
-                                {event.status}
-                              </span>
-                            </div>
-                          </div>
+                          <h3 set:html={brandName(event.title)} />
 
-                          <div class="event-details">
-                            <div class="event-meta-badges">
-                              <span class="event-badge event-badge--time">{event.when.split(" - ").slice(1).join(" - ")}</span>
-                              <span class="event-badge event-badge--location">{event.where}</span>
-                            </div>
-                            <p class="event-description">{event.description}</p>
+                          <div class="event-meta-badges">
+                            <span class="event-badge event-badge--time">{event.when.split(" - ").slice(1).join(" - ")}</span>
+                            <span class="event-badge event-badge--location">{event.where}</span>
                           </div>
+                          <p class="event-description">{event.description}</p>
 
                           <div class="event-footer">
                             {

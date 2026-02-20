@@ -702,7 +702,7 @@ h2 .accent {
 
 .event-image {
   width: 100%;
-  max-height: 16rem;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
 }
 
@@ -710,14 +710,34 @@ h2 .accent {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center;
   display: block;
 }
 
 .event-body {
   display: grid;
-  gap: var(--space-md);
-  padding: var(--space-xl);
+  gap: var(--space-sm);
+  padding: var(--space-lg);
+}
+
+@media (min-width: 52rem) {
+  .event-card {
+    grid-template-columns: 12rem 1fr;
+  }
+
+  .event-card:not(:has(.event-image)) {
+    grid-template-columns: 1fr;
+  }
+
+  .event-image {
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    min-height: 12rem;
+  }
+
+  .event-body {
+    padding: var(--space-xl);
+  }
 }
 
 /* ---- Event header: day badge + title ---- */
