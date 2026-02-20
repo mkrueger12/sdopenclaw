@@ -188,6 +188,7 @@ for (const event of events) {
     />
   </head>
   <body>
+    <div class="scroll-progress"></div>
     <div class="page-shell">
       <header class="site-header">
         <div class="container header-row">
@@ -217,7 +218,6 @@ for (const event of events) {
               </p>
               <div class="hero-actions">
                 <a class="btn btn-primary" href="#events">Explore Events &rarr;</a>
-                <a class="btn btn-ghost" href="#tracks">Find Your Track</a>
                 <a class="btn-link" href="https://github.com/mkrueger12/sdopenclaw" target="_blank" rel="noopener noreferrer">GitHub &nearr;</a>
               </div>
             </div>
@@ -247,7 +247,7 @@ for (const event of events) {
 
         <section id="about" class="section">
           <div class="container about-layout">
-            <div class="about-text">
+            <div class="about-text reveal">
               <div class="section-heading">
                 <p class="eyebrow">What is this</p>
                 <h2>A weekend to <span class="accent">build</span> with OpenClaw</h2>
@@ -260,7 +260,7 @@ for (const event of events) {
                 <li>No pitches. Just building.</li>
               </ul>
             </div>
-            <div class="about-image">
+            <div class="about-image reveal">
               <div class="about-image-frame glass-card">
                 <img src="/images/lobsterbuilders.webp" alt="Lobster builders working at their desks" />
               </div>
@@ -270,7 +270,7 @@ for (const event of events) {
 
         <section id="events" class="section section-events">
           <div class="container">
-            <div class="section-heading">
+            <div class="section-heading reveal">
               <p class="eyebrow">Events</p>
               <h2>Weekend <span class="accent">schedule</span></h2>
             </div>
@@ -278,7 +278,7 @@ for (const event of events) {
             <div class="event-timeline">
               {
                 Array.from(eventsByDay.entries()).map(([day, dayEvents]) => (
-                  <div class="timeline-day-group">
+                  <div class="timeline-day-group reveal-group">
                     <h3 class="timeline-day">{day}</h3>
                     {dayEvents.map((event) => (
                       <article class="event-card glass-card">
@@ -317,11 +317,11 @@ for (const event of events) {
 
         <section id="communities" class="section">
           <div class="container">
-            <div class="section-heading">
+            <div class="section-heading reveal">
               <p class="eyebrow">Who's involved</p>
               <h2>Participating <span class="accent">communities</span></h2>
             </div>
-            <div class="community-grid">
+            <div class="community-grid reveal-group">
               {
                 communities.map((c) => (
                   <a href={c.url} target="_blank" rel="noopener noreferrer" class="community-card glass-card" style={`--card-accent: ${c.accent}`}>
@@ -344,11 +344,11 @@ for (const event of events) {
 
         <section id="sponsors" class="section section-sponsors">
           <div class="container">
-            <div class="section-heading">
+            <div class="section-heading reveal">
               <p class="eyebrow">Thank you</p>
               <h2>Weekend <span class="accent">sponsors</span></h2>
             </div>
-            <div class="sponsor-grid">
+            <div class="sponsor-grid reveal-group">
               {
                 sponsors.map((s) => (
                   <a href={s.url} target="_blank" rel="noopener noreferrer" class="sponsor-card glass-card" style={`--card-accent: ${s.accent}`}>
@@ -369,12 +369,12 @@ for (const event of events) {
 
         <section id="organizers" class="section">
           <div class="container">
-            <div class="section-heading">
+            <div class="section-heading reveal">
               <p class="eyebrow">The people</p>
               <h2>Weekend <span class="accent">organizers</span></h2>
             </div>
 
-            <div class="organizer-grid">
+            <div class="organizer-grid reveal-group">
               {
                 organizers.map((o) => (
                   <div class="person-card glass-card" style={`--card-accent: ${o.accent}`}>
@@ -412,5 +412,60 @@ for (const event of events) {
         </div>
       </footer>
     </div>
+    <script>
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        // Scroll reveals
+        const revealObs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('revealed');
+                revealObs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+        );
+        document.querySelectorAll('.reveal, .reveal-group').forEach((el) => revealObs.observe(el));
+
+        // Nav active section
+        const navLinks = document.querySelectorAll('.top-nav a[href^="#"]');
+        const navObs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                const id = e.target.getAttribute('id');
+                const link = document.querySelector('.top-nav a[href="#' + id + '"]');
+                if (link) {
+                  navLinks.forEach((l) => l.classList.remove('is-active'));
+                  link.classList.add('is-active');
+                }
+              }
+            });
+          },
+          { rootMargin: '-40% 0px -55% 0px' }
+        );
+        document.querySelectorAll('section[id]').forEach((s) => navObs.observe(s));
+
+        // Header shrink + progress bar
+        const header = document.querySelector('.site-header');
+        const progress = document.querySelector('.scroll-progress');
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              const y = window.scrollY;
+              header?.classList.toggle('scrolled', y > 80);
+              const max = document.documentElement.scrollHeight - window.innerHeight;
+              if (progress) progress.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+              ticking = false;
+            });
+            ticking = true;
+          }
+        });
+      } else {
+        document.querySelectorAll('.reveal, .reveal-group').forEach((el) => el.classList.add('revealed'));
+      }
+    </script>
   </body>
 </html>
