@@ -53,7 +53,7 @@ const overlay = `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height
     font-size="22"
     fill="rgba(255,255,255,0.45)"
     text-anchor="end"
-  >sdopenclaw.org</text>
+  >openclawsd.com</text>
 </svg>`;
 
 const svgBuffer = Buffer.from(overlay);
