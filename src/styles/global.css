@@ -567,7 +567,6 @@ img {
 }
 
 .info-value--title {
-  font-family: "Anton", Impact, "Arial Black", sans-serif;
   font-size: var(--text-xl);
   font-weight: 400;
   text-transform: uppercase;
