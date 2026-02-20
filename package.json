@@ -13,5 +13,8 @@
     "@astrojs/check": "^0.9.6",
     "astro": "^5.10.0",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.0"
   }
 }
