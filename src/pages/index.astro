@@ -191,6 +191,7 @@ for (const event of events) {
     <meta property="og:image" content="https://sdopenclaw.org/images/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="OpenClaw SD Weekend — February 28–March 1, 2026, San Diego" />
     <meta property="og:site_name" content="OpenClaw SD Weekend" />
 
     <!-- Twitter Card -->
@@ -198,6 +199,7 @@ for (const event of events) {
     <meta name="twitter:title" content="OpenClaw SD Weekend" />
     <meta name="twitter:description" content="A weekend for builders shipping with OpenClaw in San Diego. Meetups, build sessions, and hackathons." />
     <meta name="twitter:image" content="https://sdopenclaw.org/images/og-image.jpg" />
+    <meta name="twitter:image:alt" content="OpenClaw SD Weekend — February 28–March 1, 2026, San Diego" />
 
     <!-- Canonical -->
     <link rel="canonical" href="https://sdopenclaw.org/" />
@@ -206,30 +208,142 @@ for (const event of events) {
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Event",
-        "name": "OpenClaw SD Weekend",
-        "description": "A weekend for builders shipping with OpenClaw in San Diego. Meetups, build sessions, and hackathons.",
-        "startDate": "2026-02-27",
-        "endDate": "2026-03-01",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "@type": "Place",
-          "name": "San Diego",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "San Diego",
-            "addressRegion": "CA",
-            "addressCountry": "US"
+        "@graph": [
+          {
+            "@type": "Event",
+            "name": "DEVxSD Claw Club",
+            "description": "Join the Claw Club and get your OpenClaw journey started. A hands-on workshop covering setup, hosting, models, channels, and everything you need to hit the ground running. By the end of the night, you'll have the power of OpenClaw at your fingertips.",
+            "startDate": "2026-02-27T18:00:00-08:00",
+            "endDate": "2026-02-27T22:00:00-08:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "1495 Pacific Hwy #300",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1495 Pacific Hwy #300",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "postalCode": "92101",
+                "addressCountry": "US"
+              }
+            },
+            "image": "https://sdopenclaw.org/images/events/claw-club.png",
+            "url": "https://devx.network/events/evt-Dzpa16BGEiR3NGk",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://devx.network/events/evt-Dzpa16BGEiR3NGk"
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "OpenClaw SD",
+              "url": "https://sdopenclaw.org/"
+            }
+          },
+          {
+            "@type": "Event",
+            "name": "AI Tinkerers Global Unhackathon — San Diego",
+            "description": "A synchronized build session across 24 AI Tinkerers cities worldwide. Hands-on coding with OpenClaw/ClawdBot — no pitches, no panels. Pizza, snacks, and drinks provided. Mac Mini giveaway for the best hack.",
+            "startDate": "2026-02-28T13:00:00-08:00",
+            "endDate": "2026-02-28T18:00:00-08:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "Rancho Bernardo",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "addressCountry": "US"
+              }
+            },
+            "image": "https://sdopenclaw.org/images/events/unhackathon.jpg",
+            "url": "https://san-diego.aitinkerers.org/p/openclaw-global-unhackathon-san-diego",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://san-diego.aitinkerers.org/p/openclaw-global-unhackathon-san-diego"
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "OpenClaw SD",
+              "url": "https://sdopenclaw.org/"
+            }
+          },
+          {
+            "@type": "Event",
+            "name": "SDx Deep Dives",
+            "description": "Three parallel tracks: Advanced Agent Design, Business Automation, and Security & Compliance. Hosted by Cadre with SDx, DEVx, and AI Tinkerers.",
+            "startDate": "2026-03-01T10:00:00-08:00",
+            "endDate": "2026-03-01T13:00:00-08:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "Sorrento Valley",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "addressCountry": "US"
+              }
+            },
+            "image": "https://sdopenclaw.org/images/deep_dive_coffee_darker.jpg",
+            "url": "https://lu.ma/ClawDeepdive",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://lu.ma/ClawDeepdive"
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "OpenClaw SD",
+              "url": "https://sdopenclaw.org/"
+            }
+          },
+          {
+            "@type": "Event",
+            "name": "SDx OpenClaw Showcase",
+            "description": "Show-and-tell for builders and claw-curious. Five-minute demos, real stories, no pitches. Mac Mini giveaway for the best showcase. Food and drinks provided.",
+            "startDate": "2026-03-01T14:00:00-08:00",
+            "endDate": "2026-03-01T17:00:00-08:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "Sorrento Valley",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "addressCountry": "US"
+              }
+            },
+            "image": "https://sdopenclaw.org/images/events/showcase.png",
+            "url": "https://luma.com/OpenclawSd",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://luma.com/OpenclawSd"
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "OpenClaw SD",
+              "url": "https://sdopenclaw.org/"
+            }
           }
-        },
-        "image": "https://sdopenclaw.org/images/og-image.jpg",
-        "url": "https://sdopenclaw.org/",
-        "organizer": {
-          "@type": "Organization",
-          "name": "OpenClaw SD",
-          "url": "https://sdopenclaw.org/"
-        }
+        ]
       }
     </script>
 
