@@ -252,6 +252,11 @@ for (const event of events) {
             <a href="#communities">Communities</a>
             <a href="#sponsors">Sponsors</a>
           </nav>
+          <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+          </button>
         </div>
       </header>
 
@@ -516,7 +521,20 @@ for (const event of events) {
         document.querySelectorAll('section[id]').forEach((s) => navObs.observe(s));
 
         // Header shrink + progress bar
+        // Mobile nav toggle
+        const navToggle = document.querySelector('.nav-toggle');
         const header = document.querySelector('.site-header');
+        navToggle?.addEventListener('click', () => {
+          const open = header.classList.toggle('nav-open');
+          navToggle.setAttribute('aria-expanded', String(open));
+        });
+        document.querySelectorAll('.top-nav a').forEach((a) => {
+          a.addEventListener('click', () => {
+            header.classList.remove('nav-open');
+            navToggle?.setAttribute('aria-expanded', 'false');
+          });
+        });
+
         const progress = document.querySelector('.scroll-progress');
         let ticking = false;
         window.addEventListener('scroll', () => {
