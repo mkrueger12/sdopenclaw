@@ -434,8 +434,8 @@ img {
 
 .hero-stats-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-md);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg) var(--space-xl);
   padding-top: var(--space-lg);
   padding-bottom: var(--space-lg);
 }
@@ -443,7 +443,9 @@ img {
 .hero-stat {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  align-items: center;
+  text-align: center;
+  gap: 0.25rem;
 }
 
 .hero-stat-number {
@@ -1358,10 +1360,6 @@ h2 .accent {
 
   .hero-bg-img {
     object-position: right center;
-  }
-
-  .hero-stats-grid {
-    grid-template-columns: repeat(3, 1fr);
   }
 
   .about-layout {
