@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import heroBg from "../assets/images/hero-bg.jpg";
 import "../styles/global.css";
 
 const weekend = {
@@ -385,7 +387,17 @@ for (const event of events) {
       <main id="main">
         <section class="hero">
           <div class="hero-bg" aria-hidden="true">
-            <img src="/images/lobster_modified (2).jpg" alt="" class="hero-bg-img" />
+            <Image
+              src={heroBg}
+              alt=""
+              class="hero-bg-img"
+              widths={[640, 960, 1280, 1920]}
+              sizes="100vw"
+              format="webp"
+              quality={75}
+              loading="eager"
+              fetchpriority="high"
+            />
             <div class="hero-bg-grain"></div>
           </div>
 
