@@ -151,6 +151,7 @@ const events = [
     description:
       "Show-and-tell for builders and claw-curious. Five-minute demos, real stories, no pitches. Mac Mini giveaway for the best showcase. Food and drinks provided.",
     image: "/images/events/showcase.png",
+    imageFit: "cover" as const,
     status: "Confirmed",
     signupLabel: "RSVP on Luma",
     signupUrl: "https://luma.com/OpenclawSd"
@@ -351,7 +352,7 @@ for (const event of events) {
                       <article class="event-card glass-card">
                         {event.image && (
                           <div class="event-image">
-                            <img src={event.image} alt={event.title} />
+                            <img src={event.image} alt={event.title} style={event.imageFit ? `object-fit:${event.imageFit}` : undefined} />
                           </div>
                         )}
                         <div class="event-body">
