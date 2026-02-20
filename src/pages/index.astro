@@ -1,4 +1,12 @@
 ---
+import { Image } from "astro:assets";
+import heroBg from "../assets/images/hero-bg.jpg";
+import lobsterLogo from "../assets/images/lobster-logo.png";
+import lobsterBuilders from "../assets/images/lobsterbuilders.webp";
+import imgClawClub from "../assets/images/events/claw-club.png";
+import imgUnhackathon from "../assets/images/events/unhackathon.jpg";
+import imgDeepDive from "../assets/images/events/deep-dive.jpg";
+import imgShowcase from "../assets/images/events/showcase.png";
 import "../styles/global.css";
 
 const weekend = {
@@ -12,7 +20,7 @@ const weekend = {
 const communities = [
   {
     name: "AI Tinkerers",
-    logo: "/logos/ai-tinkerers.svg",
+    logo: "/logos/ai-tinkerers.png",
     tagline: "The builders' room",
     description:
       "A global community of engineers, researchers, and founders shipping AI in production. 203+ cities worldwide.",
@@ -67,6 +75,13 @@ const sponsors = [
     description: "The intelligence platform for behavioral health.",
     url: "https://www.clinicalnotes.ai/",
     accent: "#9900ff"
+  },
+  {
+    name: "Structured",
+    logo: "/logos/structured.png",
+    description: "Award-winning IT solution provider delivering secure, cloud-connected digital infrastructure and managed services.",
+    url: "https://structured.com/",
+    accent: "#315B72"
   }
 ];
 
@@ -74,9 +89,9 @@ const organizers = [
   {
     name: "Max Krueger",
     photo: "/organizers/Headshots/Max.jpeg",
-    org: "Backland Labs",
+    org: "AI Tinkerers SD/Backland Labs",
     orgUrl: "https://www.backlandlabs.io/",
-    bio: "AI consulting and workflow automation. Runs builder events across San Diego.",
+    bio: "Run's builder events across San Diego.",
     accent: "#111111"
   },
   {
@@ -117,7 +132,7 @@ const events = [
     where: "1495 Pacific Hwy #300, San Diego, CA 92101",
     description:
       "Join the Claw Club and get your OpenClaw journey started. A hands-on workshop covering setup, hosting, models, channels, and everything you need to hit the ground running. By the end of the night, you'll have the power of OpenClaw at your fingertips.",
-    image: "/images/events/claw-club.png",
+    image: imgClawClub,
     status: "Confirmed",
     signupLabel: "RSVP on DEVx",
     signupUrl: "https://devx.network/events/evt-Dzpa16BGEiR3NGk"
@@ -128,7 +143,7 @@ const events = [
     where: "Rancho Bernardo, San Diego",
     description:
       "A synchronized build session across 24 AI Tinkerers cities worldwide. Hands-on coding with OpenClaw/ClawdBot -- no pitches, no panels. Pizza, snacks, and drinks provided. Mac Mini giveaway for the best hack.",
-    image: "/images/events/unhackathon.jpg",
+    image: imgUnhackathon,
     status: "Confirmed",
     signupLabel: "RSVP on AI Tinkerers",
     signupUrl: "https://san-diego.aitinkerers.org/p/openclaw-global-unhackathon-san-diego"
@@ -139,7 +154,7 @@ const events = [
     where: "Sorrento Valley, San Diego",
     description:
       "Three parallel tracks: Advanced Agent Design, Business Automation, and Security & Compliance. Hosted by Cadre with SDx, DEVx, and AI Tinkerers.",
-    image: "/images/deep_dive_coffee_darker.jpg",
+    image: imgDeepDive,
     status: "Confirmed",
     signupLabel: "RSVP on Luma",
     signupUrl: "https://lu.ma/ClawDeepdive"
@@ -150,7 +165,7 @@ const events = [
     where: "Sorrento Valley, San Diego",
     description:
       "Show-and-tell for builders and claw-curious. Five-minute demos, real stories, no pitches. Mac Mini giveaway for the best showcase. Food and drinks provided.",
-    image: "/images/events/showcase.png",
+    image: imgShowcase,
     imageFit: "cover" as const,
     status: "Confirmed",
     signupLabel: "RSVP on Luma",
@@ -191,6 +206,7 @@ for (const event of events) {
     <meta property="og:image" content="https://sdopenclaw.org/images/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="OpenClaw SD Weekend — February 28–March 1, 2026, San Diego" />
     <meta property="og:site_name" content="OpenClaw SD Weekend" />
 
     <!-- Twitter Card -->
@@ -198,6 +214,7 @@ for (const event of events) {
     <meta name="twitter:title" content="OpenClaw SD Weekend" />
     <meta name="twitter:description" content="A weekend for builders shipping with OpenClaw in San Diego. Meetups, build sessions, and hackathons." />
     <meta name="twitter:image" content="https://sdopenclaw.org/images/og-image.jpg" />
+    <meta name="twitter:image:alt" content="OpenClaw SD Weekend — February 28–March 1, 2026, San Diego" />
 
     <!-- Canonical -->
     <link rel="canonical" href="https://sdopenclaw.org/" />
@@ -206,37 +223,149 @@ for (const event of events) {
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Event",
-        "name": "OpenClaw SD Weekend",
-        "description": "A weekend for builders shipping with OpenClaw in San Diego. Meetups, build sessions, and hackathons.",
-        "startDate": "2026-02-27",
-        "endDate": "2026-03-01",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "location": {
-          "@type": "Place",
-          "name": "San Diego",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "San Diego",
-            "addressRegion": "CA",
-            "addressCountry": "US"
+        "@graph": [
+          {
+            "@type": "Event",
+            "name": "DEVxSD Claw Club",
+            "description": "Join the Claw Club and get your OpenClaw journey started. A hands-on workshop covering setup, hosting, models, channels, and everything you need to hit the ground running. By the end of the night, you'll have the power of OpenClaw at your fingertips.",
+            "startDate": "2026-02-27T18:00:00-08:00",
+            "endDate": "2026-02-27T22:00:00-08:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "1495 Pacific Hwy #300",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "1495 Pacific Hwy #300",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "postalCode": "92101",
+                "addressCountry": "US"
+              }
+            },
+            "image": "https://sdopenclaw.org/images/events/claw-club.png",
+            "url": "https://devx.network/events/evt-Dzpa16BGEiR3NGk",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://devx.network/events/evt-Dzpa16BGEiR3NGk"
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "OpenClaw SD",
+              "url": "https://sdopenclaw.org/"
+            }
+          },
+          {
+            "@type": "Event",
+            "name": "AI Tinkerers Global Unhackathon — San Diego",
+            "description": "A synchronized build session across 24 AI Tinkerers cities worldwide. Hands-on coding with OpenClaw/ClawdBot — no pitches, no panels. Pizza, snacks, and drinks provided. Mac Mini giveaway for the best hack.",
+            "startDate": "2026-02-28T13:00:00-08:00",
+            "endDate": "2026-02-28T18:00:00-08:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "Rancho Bernardo",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "addressCountry": "US"
+              }
+            },
+            "image": "https://sdopenclaw.org/images/events/unhackathon.jpg",
+            "url": "https://san-diego.aitinkerers.org/p/openclaw-global-unhackathon-san-diego",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://san-diego.aitinkerers.org/p/openclaw-global-unhackathon-san-diego"
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "OpenClaw SD",
+              "url": "https://sdopenclaw.org/"
+            }
+          },
+          {
+            "@type": "Event",
+            "name": "SDx Deep Dives",
+            "description": "Three parallel tracks: Advanced Agent Design, Business Automation, and Security & Compliance. Hosted by Cadre with SDx, DEVx, and AI Tinkerers.",
+            "startDate": "2026-03-01T10:00:00-08:00",
+            "endDate": "2026-03-01T13:00:00-08:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "Sorrento Valley",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "addressCountry": "US"
+              }
+            },
+            "image": "https://sdopenclaw.org/images/deep_dive_coffee_darker.jpg",
+            "url": "https://lu.ma/ClawDeepdive",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://lu.ma/ClawDeepdive"
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "OpenClaw SD",
+              "url": "https://sdopenclaw.org/"
+            }
+          },
+          {
+            "@type": "Event",
+            "name": "SDx OpenClaw Showcase",
+            "description": "Show-and-tell for builders and claw-curious. Five-minute demos, real stories, no pitches. Mac Mini giveaway for the best showcase. Food and drinks provided.",
+            "startDate": "2026-03-01T14:00:00-08:00",
+            "endDate": "2026-03-01T17:00:00-08:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "Sorrento Valley",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "addressCountry": "US"
+              }
+            },
+            "image": "https://sdopenclaw.org/images/events/showcase.png",
+            "url": "https://luma.com/OpenclawSd",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://luma.com/OpenclawSd"
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "OpenClaw SD",
+              "url": "https://sdopenclaw.org/"
+            }
           }
-        },
-        "image": "https://sdopenclaw.org/images/og-image.jpg",
-        "url": "https://sdopenclaw.org/",
-        "organizer": {
-          "@type": "Organization",
-          "name": "OpenClaw SD",
-          "url": "https://sdopenclaw.org/"
-        }
+        ]
       }
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600;700&family=Red+Hat+Display:wght@700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Red+Hat+Display:wght@700;800;900&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -246,7 +375,7 @@ for (const event of events) {
     <div class="page-shell">
       <header class="site-header">
         <div class="container header-row">
-          <p class="brand"><img src="/images/lobster_side_view.png" alt="" class="brand-logo" /><span class="brand-text">Open<span class="accent">Claw</span> SD</span></p>
+          <p class="brand"><Image src={lobsterLogo} alt="" class="brand-logo" width={64} height={64} format="webp" quality={80} /><span class="brand-text">Open<span class="accent">Claw</span> SD</span></p>
           <nav aria-label="Section navigation" class="top-nav">
             <a href="#about">About</a>
             <a href="#events">Events</a>
@@ -264,7 +393,17 @@ for (const event of events) {
       <main id="main">
         <section class="hero">
           <div class="hero-bg" aria-hidden="true">
-            <img src="/images/lobster_modified (2).jpg" alt="" class="hero-bg-img" />
+            <Image
+              src={heroBg}
+              alt=""
+              class="hero-bg-img"
+              widths={[640, 960, 1280, 1920]}
+              sizes="100vw"
+              format="webp"
+              quality={75}
+              loading="eager"
+              fetchpriority="high"
+            />
             <div class="hero-bg-grain"></div>
           </div>
 
@@ -317,7 +456,14 @@ for (const event of events) {
               </div>
               <div class="about-image reveal">
                 <div class="about-image-frame glass-card">
-                  <img src="/images/lobsterbuilders.webp" alt="Lobster builders working at their desks" />
+                  <Image
+                    src={lobsterBuilders}
+                    alt="Lobster builders working at their desks"
+                    widths={[400, 600, 800]}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    format="webp"
+                    quality={80}
+                  />
                 </div>
               </div>
             </div>
@@ -358,7 +504,15 @@ for (const event of events) {
                       <article class="event-card glass-card">
                         {event.image && (
                           <div class="event-image">
-                            <img src={event.image} alt={event.title} style={event.imageFit ? `object-fit:${event.imageFit}` : undefined} />
+                            <Image
+                              src={event.image}
+                              alt={event.title}
+                              widths={[400, 600, 800]}
+                              sizes="(max-width: 768px) 100vw, 400px"
+                              format="webp"
+                              quality={80}
+                              style={event.imageFit ? `object-fit:${event.imageFit}` : undefined}
+                            />
                           </div>
                         )}
                         <div class="event-body">

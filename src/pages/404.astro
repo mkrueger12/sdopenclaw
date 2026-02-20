@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import lobsterLogo from "../assets/images/lobster-logo.png";
 import "../styles/global.css";
 ---
 
@@ -25,7 +27,7 @@ import "../styles/global.css";
       <header class="site-header">
         <div class="container header-row">
           <a href="/" class="brand" style="text-decoration:none">
-            <img src="/images/lobster_side_view.png" alt="" class="brand-logo" />
+            <Image src={lobsterLogo} alt="" class="brand-logo" width={64} height={64} format="webp" quality={80} />
             <span class="brand-text">Open<span class="accent">Claw</span> SD</span>
           </a>
         </div>

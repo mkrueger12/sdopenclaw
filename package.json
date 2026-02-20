@@ -7,11 +7,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "og": "node scripts/generate-og-image.mjs"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
     "astro": "^5.10.0",
+    "sharp": "^0.34.5",
     "typescript": "^5.9.3"
   },
   "dependencies": {
