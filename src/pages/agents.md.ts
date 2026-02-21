@@ -28,6 +28,13 @@ const communities = [
       "The next-gen startup community for AI builders. 1000+ members, 50+ events, 15+ startups launched.",
     url: "https://www.sdx.community/",
   },
+  {
+    name: "San Diego AI Circle",
+    tagline: "Deep technical AI builders",
+    description:
+      "A curated group of highly technical builders working at the edge of deep learning and agentic systems.",
+    url: "https://eventship.com/event/san-diego-ai-circle",
+  },
 ];
 
 const sponsors = [
