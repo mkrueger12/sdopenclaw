@@ -123,7 +123,7 @@ const events = [
     when: "Saturday, February 28 - 6:30 PM - 9:00 PM",
     where: "San Diego, CA 92121",
     description:
-      "Join builders from OpenClaw weekend to enjoy some post-building API's IPA's. Hosted by San Diego AI Circle — a curated group of highly technical builders working at the edge of deep learning and agentic systems.",
+      "Join builders from OpenClaw weekend to enjoy some post-building ~~API's~~ IPA's. Hosted by San Diego AI Circle — a curated group of highly technical builders working at the edge of deep learning and agentic systems.",
     signupLabel: "RSVP on Eventship",
     signupUrl:
       "https://eventship.com/event/molts-malts-hosted-by-san-diego-ai-circle",

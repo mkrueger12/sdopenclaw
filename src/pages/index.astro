@@ -171,7 +171,7 @@ const events = [
     when: "Saturday, February 28 - 6:30 PM - 9:00 PM",
     where: "San Diego, CA 92121",
     description:
-      "Join builders from OpenClaw weekend to enjoy some post-building API's IPA's. Hosted by San Diego AI Circle — a curated group of highly technical builders working at the edge of deep learning and agentic systems.",
+      "Join builders from OpenClaw weekend to enjoy some post-building <s>API's</s> IPA's. Hosted by San Diego AI Circle — a curated group of highly technical builders working at the edge of deep learning and agentic systems.",
     image: imgMoltsMalts,
     imageFit: "cover",
     status: "Confirmed",
@@ -475,7 +475,7 @@ for (const event of events) {
               <p class="hero-headline-location">San Diego</p>
               <h1 class="hero-headline-title">Open<span class="accent">Claw</span><br />Weekend</h1>
               <p class="hero-desc">
-                A weekend for builders, makers, and the claw-curious. Whether you're deploying your first agent or orchestrating multi-agent workflows — there's a track for you.
+                A weekend of shipping, hacking, and deep dives with OpenClaw in San Diego. Whether you're wiring up multi-agent workflows or deploying your first one — there's a track for you.
               </p>
               <div class="hero-actions">
                 <a class="btn btn-primary" href="#events">Explore Events &rarr;</a>
@@ -510,10 +510,10 @@ for (const event of events) {
                   <h2>A weekend to <span class="accent">build</span> with OpenClaw</h2>
                 </div>
                 <p class="section-lead">
-                  If you haven't heard of <a href="https://openclaw.ai/" class="inline-link" target="_blank" rel="noopener noreferrer">OpenClaw</a> yet — welcome, you're in the right place. It's an open-source AI agent that lives on <em>your</em> machine. Not a chatbot you visit in a browser. It connects to your apps (WhatsApp, Slack, iMessage), browses the web, runs code, and automates your life. All your data stays on your hardware.
+                  <a href="https://openclaw.ai/" class="inline-link" target="_blank" rel="noopener noreferrer">OpenClaw</a> is an open-source AI agent that lives on <em>your</em> machine. Not a chatbot you visit in a browser. It connects to your apps (WhatsApp, Slack, iMessage), browses the web, runs code, and automates your life. All your data stays on your hardware.
                 </p>
                 <p class="section-detail">
-                  Created by <a href="https://steipete.me/" class="inline-link" target="_blank" rel="noopener noreferrer">Peter Steinberger</a>, it's one of the fastest-growing open-source projects out there — and the lobster? That's the mascot. OpenClaw doesn't just talk. It has claws. It <em>does things</em>.
+                  Created by <a href="https://steipete.me/" class="inline-link" target="_blank" rel="noopener noreferrer">Peter Steinberger</a>, it's one of the fastest-growing open-source AI projects on GitHub — and it doesn't just talk. It has claws. It reads your files, calls APIs, runs commands, and ships automations. The lobster is the mascot.
                 </p>
               </div>
               <div class="about-image reveal">
@@ -532,18 +532,18 @@ for (const event of events) {
 
             <div class="who-grid reveal-group">
               <div class="who-card glass-card">
-                <p class="who-label">New to all of this?</p>
+                <p class="who-label">Getting started?</p>
                 <p class="who-outcome">No experience needed. You'll leave Friday night with a working AI agent on your machine, connected to your phone.</p>
                 <a href="#events" class="who-link">Friday Claw Club &rarr;</a>
               </div>
               <div class="who-card glass-card">
-                <p class="who-label">Want to build something real?</p>
+                <p class="who-label">Ready to ship?</p>
                 <p class="who-outcome">Bring a project or start one. Ship a custom skill or automation Saturday alongside <a href="https://san-diego.aitinkerers.org/" class="inline-link" target="_blank" rel="noopener noreferrer">24 cities worldwide</a>.</p>
                 <a href="#events" class="who-link">Saturday Unhackathon &rarr;</a>
               </div>
               <div class="who-card glass-card">
-                <p class="who-label">Want to go deeper?</p>
-                <p class="who-outcome">Learn from San Diego's best builders. Deep dives on orchestration, security, and business automation — then a showcase of what everyone built.</p>
+                <p class="who-label">Go deep.</p>
+                <p class="who-outcome">Tracks on agent design, security, and automation — led by builders who've put this stuff in production. Then a showcase of what everyone built.</p>
                 <a href="#events" class="who-link">Sunday Deep Dives &rarr;</a>
               </div>
             </div>
@@ -584,7 +584,7 @@ for (const event of events) {
                             <span class="event-badge event-badge--time">{event.when.split(" - ").slice(1).join(" - ")}</span>
                             <span class="event-badge event-badge--location">{event.where}</span>
                           </div>
-                          <p class="event-description">{event.description}</p>
+                          <p class="event-description" set:html={event.description} />
 
                           <div class="event-footer">
                             {
