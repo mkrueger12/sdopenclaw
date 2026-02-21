@@ -60,6 +60,12 @@ const sponsors = [
       "Award-winning IT solution provider delivering secure, cloud-connected digital infrastructure and managed services.",
     url: "https://structured.com/",
   },
+  {
+    name: "Aurapath AI",
+    description:
+      "AI-native agency that designs, builds, and deploys AI systems. Get AI that works.",
+    url: "https://aurapathai.com",
+  },
 ];
 
 const organizers = [
@@ -76,7 +82,7 @@ const organizers = [
   {
     name: "Travis Johnson",
     org: "AuraPath AI",
-    url: "https://www.aurapath.us/",
+    url: "https://aurapathai.com",
   },
   {
     name: "Sam Holmes",
@@ -104,6 +110,16 @@ const events = [
     signupLabel: "RSVP on AI Tinkerers",
     signupUrl:
       "https://san-diego.aitinkerers.org/p/openclaw-global-unhackathon-san-diego",
+  },
+  {
+    title: "Molts & Malts",
+    when: "Saturday, February 28 - 6:30 PM - 9:00 PM",
+    where: "San Diego, CA 92121",
+    description:
+      "Join builders from OpenClaw weekend to enjoy some post-building API's IPA's. Hosted by San Diego AI Circle — a curated group of highly technical builders working at the edge of deep learning and agentic systems.",
+    signupLabel: "RSVP on Eventship",
+    signupUrl:
+      "https://eventship.com/event/molts-malts-hosted-by-san-diego-ai-circle",
   },
   {
     title: "SDx Deep Dives",

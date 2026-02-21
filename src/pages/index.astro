@@ -7,6 +7,7 @@ import imgClawClub from "../assets/images/events/claw-club.png";
 import imgUnhackathon from "../assets/images/events/unhackathon.jpg";
 import imgDeepDive from "../assets/images/events/deep-dive.jpg";
 import imgShowcase from "../assets/images/events/showcase.png";
+import imgMoltsMalts from "../assets/images/events/molts-malts.jpg";
 import "../styles/global.css";
 
 const weekend = {
@@ -82,6 +83,13 @@ const sponsors = [
     description: "Award-winning IT solution provider delivering secure, cloud-connected digital infrastructure and managed services.",
     url: "https://structured.com/",
     accent: "#315B72"
+  },
+  {
+    name: "Aurapath AI",
+    logo: "/logos/aurapath-ai.png",
+    description: "AI-native agency that designs, builds, and deploys AI systems. Get AI that works.",
+    url: "https://aurapathai.com",
+    accent: "#DAA520"
   }
 ];
 
@@ -106,7 +114,7 @@ const organizers = [
     name: "Travis Johnson",
     photo: "/organizers/Headshots/Travis.jpeg",
     org: "AuraPath AI",
-    orgUrl: "https://www.aurapath.us/",
+    orgUrl: "https://aurapathai.com",
     bio: "AI implementation consulting. Building custom AI solutions that actually work.",
     accent: "#111111"
   },
@@ -148,6 +156,18 @@ const events = [
     status: "Confirmed",
     signupLabel: "RSVP on AI Tinkerers",
     signupUrl: "https://san-diego.aitinkerers.org/p/openclaw-global-unhackathon-san-diego"
+  },
+  {
+    title: "Molts & Malts",
+    when: "Saturday, February 28 - 6:30 PM - 9:00 PM",
+    where: "San Diego, CA 92121",
+    description:
+      "Join builders from OpenClaw weekend to enjoy some post-building API's IPA's. Hosted by San Diego AI Circle — a curated group of highly technical builders working at the edge of deep learning and agentic systems.",
+    image: imgMoltsMalts,
+    imageFit: "cover",
+    status: "Confirmed",
+    signupLabel: "RSVP on Eventship",
+    signupUrl: "https://eventship.com/event/molts-malts-hosted-by-san-diego-ai-circle"
   },
   {
     title: "SDx Deep Dives",
@@ -295,6 +315,39 @@ for (const event of events) {
           },
           {
             "@type": "Event",
+            "name": "Molts & Malts — Hosted by San Diego AI Circle",
+            "description": "Join builders from OpenClaw weekend to enjoy some post-building API's IPA's. Hosted by San Diego AI Circle — a curated group of highly technical builders working at the edge of deep learning and agentic systems.",
+            "startDate": "2026-02-28T18:30:00-08:00",
+            "endDate": "2026-02-28T21:00:00-08:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "San Diego",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "postalCode": "92121",
+                "addressCountry": "US"
+              }
+            },
+            "url": "https://eventship.com/event/molts-malts-hosted-by-san-diego-ai-circle",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://eventship.com/event/molts-malts-hosted-by-san-diego-ai-circle"
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "San Diego AI Circle",
+              "url": "https://eventship.com/event/molts-malts-hosted-by-san-diego-ai-circle"
+            }
+          },
+          {
+            "@type": "Event",
             "name": "SDx Deep Dives",
             "description": "Three parallel tracks: Advanced Agent Design, Business Automation, and Security & Compliance. Hosted by Cadre with SDx, DEVx, and AI Tinkerers.",
             "startDate": "2026-03-01T10:00:00-08:00",
@@ -424,7 +477,7 @@ for (const event of events) {
           <div class="hero-stats">
             <div class="container hero-stats-grid">
               <div class="hero-stat">
-                <span class="hero-stat-number">4</span>
+                <span class="hero-stat-number">5</span>
                 <span class="hero-stat-label">Events over 3 days</span>
               </div>
               <div class="hero-stat">
