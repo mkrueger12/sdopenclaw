@@ -1785,3 +1785,170 @@ h2 .accent {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+
+/* ============================================================
+   Setup section — tabbed OS instructions
+   ============================================================ */
+
+.section-setup {
+  background: transparent;
+}
+
+.setup-tabs {
+  margin-top: 2rem;
+}
+
+.setup-tab-bar {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 0;
+}
+
+.setup-tab-btn {
+  padding: 0.6rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  border-radius: 4px 4px 0 0;
+}
+
+.setup-tab-btn:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.setup-tab-btn.is-active {
+  color: #fff;
+  border-bottom-color: var(--accent, #D4520A);
+}
+
+.setup-tab-panel {
+  border-radius: 0 0.75rem 0.75rem 0.75rem;
+  padding: 2rem;
+  margin-top: 0;
+}
+
+.setup-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: setup-step;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.setup-step {
+  counter-increment: setup-step;
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0 1rem;
+  align-items: start;
+}
+
+.setup-step::before {
+  content: counter(setup-step);
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 82, 10, 0.15);
+  border: 1.5px solid rgba(212, 82, 10, 0.4);
+  color: #D4520A;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.setup-step > * {
+  grid-column: 2;
+}
+
+.setup-step-title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+  color: #fff;
+}
+
+.setup-step-desc {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 0.5rem;
+}
+
+.setup-step-alt {
+  margin-top: 0.5rem;
+}
+
+.setup-code-block {
+  display: flex;
+  align-items: stretch;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin: 0.25rem 0 0;
+}
+
+.setup-code-block code {
+  flex: 1;
+  display: block;
+  padding: 0.65rem 0.9rem;
+  font-family: 'ui-monospace', 'Cascadia Code', 'Source Code Pro', monospace;
+  font-size: 0.85rem;
+  color: #e2e8f0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.copy-btn {
+  flex-shrink: 0;
+  padding: 0 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.06);
+  border: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.copy-btn:hover {
+  background: rgba(212, 82, 10, 0.2);
+  color: #fff;
+}
+
+.inline-code {
+  font-family: 'ui-monospace', 'Cascadia Code', 'Source Code Pro', monospace;
+  font-size: 0.85em;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+  color: #e2e8f0;
+}
+
+@media (max-width: 520px) {
+  .setup-tab-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  .setup-step {
+    grid-template-columns: 1.75rem 1fr;
+  }
+  .setup-tab-panel {
+    padding: 1.25rem;
+  }
+}

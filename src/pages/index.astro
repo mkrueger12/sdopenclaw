@@ -379,6 +379,7 @@ for (const event of events) {
           <p class="brand"><Image src={lobsterLogo} alt="" class="brand-logo" width={64} height={64} format="webp" quality={80} /><span class="brand-text">Open<span class="accent">Claw</span> SD</span></p>
           <nav aria-label="Section navigation" class="top-nav">
             <a href="#about">About</a>
+            <a href="#setup">Setup</a>
             <a href="#events">Events</a>
             <a href="#communities">Communities</a>
             <a href="#sponsors">Sponsors</a>
@@ -483,6 +484,106 @@ for (const event of events) {
                 <p class="who-label">Want to go deeper?</p>
                 <p class="who-outcome">Learn from San Diego's best builders. Deep dives on orchestration, security, and business automation — then a showcase of what everyone built.</p>
                 <a href="#events" class="who-link">Sunday Deep Dives &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="setup" class="section section-setup">
+          <div class="container">
+            <div class="section-heading reveal">
+              <p class="eyebrow">Before you arrive</p>
+              <h2>Get <span class="accent">set up</span> in minutes</h2>
+            </div>
+            <p class="section-lead reveal">
+              You'll need SSH agent forwarding enabled so OpenClaw can connect to shared infrastructure during the event. Pick your OS below.
+            </p>
+            <div class="setup-tabs reveal">
+              <div class="setup-tab-bar" role="tablist" aria-label="Operating system setup">
+                <button class="setup-tab-btn is-active" role="tab" aria-selected="true" aria-controls="setup-mac" id="tab-mac" data-tab="mac">macOS / Linux</button>
+                <button class="setup-tab-btn" role="tab" aria-selected="false" aria-controls="setup-win" id="tab-win" data-tab="win">Windows</button>
+              </div>
+
+              <!-- macOS / Linux tab panel -->
+              <div class="setup-tab-panel is-active glass-card" id="setup-mac" role="tabpanel" aria-labelledby="tab-mac">
+                <ol class="setup-steps">
+                  <li class="setup-step">
+                    <p class="setup-step-title">Generate or locate your SSH key</p>
+                    <p class="setup-step-desc">If you don't have one yet, run:</p>
+                    <div class="setup-code-block">
+                      <code>ssh-keygen -t ed25519 -C "you@example.com"</code>
+                      <button class="copy-btn" aria-label="Copy command" data-copy="ssh-keygen -t ed25519 -C &quot;you@example.com&quot;">Copy</button>
+                    </div>
+                  </li>
+                  <li class="setup-step">
+                    <p class="setup-step-title">Add your key to the SSH agent</p>
+                    <div class="setup-code-block">
+                      <code>ssh-add ~/.ssh/id_ed25519</code>
+                      <button class="copy-btn" aria-label="Copy command" data-copy="ssh-add ~/.ssh/id_ed25519">Copy</button>
+                    </div>
+                  </li>
+                  <li class="setup-step">
+                    <p class="setup-step-title">Verify the key is loaded</p>
+                    <div class="setup-code-block">
+                      <code>ssh-add -l</code>
+                      <button class="copy-btn" aria-label="Copy command" data-copy="ssh-add -l">Copy</button>
+                    </div>
+                  </li>
+                  <li class="setup-step">
+                    <p class="setup-step-title">Connect with agent forwarding</p>
+                    <p class="setup-step-desc">Replace <code class="inline-code">user@host</code> with the address shared at the event:</p>
+                    <div class="setup-code-block">
+                      <code>ssh -A user@host</code>
+                      <button class="copy-btn" aria-label="Copy command" data-copy="ssh -A user@host">Copy</button>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+
+              <!-- Windows tab panel -->
+              <div class="setup-tab-panel glass-card" id="setup-win" role="tabpanel" aria-labelledby="tab-win" hidden>
+                <ol class="setup-steps">
+                  <li class="setup-step">
+                    <p class="setup-step-title">Enable and start the OpenSSH Authentication Agent service</p>
+                    <p class="setup-step-desc">Open <strong>PowerShell as Administrator</strong> and run:</p>
+                    <div class="setup-code-block">
+                      <code>Set-Service -Name ssh-agent -StartupType Automatic; Start-Service ssh-agent</code>
+                      <button class="copy-btn" aria-label="Copy command" data-copy="Set-Service -Name ssh-agent -StartupType Automatic; Start-Service ssh-agent">Copy</button>
+                    </div>
+                  </li>
+                  <li class="setup-step">
+                    <p class="setup-step-title">Generate or locate your SSH key</p>
+                    <p class="setup-step-desc">If you don't have one yet, run in PowerShell:</p>
+                    <div class="setup-code-block">
+                      <code>ssh-keygen -t ed25519 -C "you@example.com"</code>
+                      <button class="copy-btn" aria-label="Copy command" data-copy='ssh-keygen -t ed25519 -C "you@example.com"'>Copy</button>
+                    </div>
+                  </li>
+                  <li class="setup-step">
+                    <p class="setup-step-title">Add your key to the agent</p>
+                    <p class="setup-step-desc">The default key path on Windows is:</p>
+                    <div class="setup-code-block">
+                      <code>ssh-add $env:USERPROFILE\.ssh\id_ed25519</code>
+                      <button class="copy-btn" aria-label="Copy command" data-copy="ssh-add $env:USERPROFILE\.ssh\id_ed25519">Copy</button>
+                    </div>
+                    <p class="setup-step-desc setup-step-alt">If you used a different name, replace <code class="inline-code">id_ed25519</code> with your actual key filename (e.g. <code class="inline-code">id_rsa</code>).</p>
+                  </li>
+                  <li class="setup-step">
+                    <p class="setup-step-title">Verify the key is loaded</p>
+                    <div class="setup-code-block">
+                      <code>ssh-add -l</code>
+                      <button class="copy-btn" aria-label="Copy command" data-copy="ssh-add -l">Copy</button>
+                    </div>
+                  </li>
+                  <li class="setup-step">
+                    <p class="setup-step-title">Connect with agent forwarding</p>
+                    <p class="setup-step-desc">Replace <code class="inline-code">user@host</code> with the address shared at the event:</p>
+                    <div class="setup-code-block">
+                      <code>ssh -A user@host</code>
+                      <button class="copy-btn" aria-label="Copy command" data-copy="ssh -A user@host">Copy</button>
+                    </div>
+                  </li>
+                </ol>
               </div>
             </div>
           </div>
@@ -641,6 +742,38 @@ for (const event of events) {
       </footer>
     </div>
     <script>
+      // Setup tabs
+      document.querySelectorAll('.setup-tab-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const tab = btn.dataset.tab;
+          document.querySelectorAll('.setup-tab-btn').forEach((b) => {
+            b.classList.toggle('is-active', b === btn);
+            b.setAttribute('aria-selected', String(b === btn));
+          });
+          document.querySelectorAll('.setup-tab-panel').forEach((panel) => {
+            const isActive = panel.id === 'setup-' + tab;
+            panel.classList.toggle('is-active', isActive);
+            if (isActive) {
+              panel.removeAttribute('hidden');
+            } else {
+              panel.setAttribute('hidden', '');
+            }
+          });
+        });
+      });
+
+      // Copy buttons
+      document.querySelectorAll('.copy-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const text = btn.dataset.copy;
+          navigator.clipboard.writeText(text).then(() => {
+            const orig = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => { btn.textContent = orig; }, 1500);
+          });
+        });
+      });
+
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         // Scroll reveals
         const revealObs = new IntersectionObserver(
