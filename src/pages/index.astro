@@ -772,7 +772,9 @@ for (const event of events) {
       if (heroEl && discordCta) {
         const discordObs = new IntersectionObserver(
           ([entry]) => {
-            discordCta.classList.toggle('visible', !entry.isIntersecting);
+            const show = !entry.isIntersecting;
+            discordCta.classList.toggle('visible', show);
+            document.body.classList.toggle('discord-cta-active', show);
           },
           { threshold: 0 }
         );
