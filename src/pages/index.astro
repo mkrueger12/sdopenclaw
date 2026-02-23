@@ -746,52 +746,54 @@ for (const event of events) {
           { rootMargin: '-40% 0px -55% 0px' }
         );
         document.querySelectorAll('section[id]').forEach((s) => navObs.observe(s));
-
-        // Header shrink + progress bar
-        // Mobile nav toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const header = document.querySelector('.site-header');
-        navToggle?.addEventListener('click', () => {
-          const open = header.classList.toggle('nav-open');
-          navToggle.setAttribute('aria-expanded', String(open));
-        });
-        document.querySelectorAll('.top-nav a').forEach((a) => {
-          a.addEventListener('click', () => {
-            header.classList.remove('nav-open');
-            navToggle?.setAttribute('aria-expanded', 'false');
-          });
-        });
-
-        // Discord CTA — show after hero exits viewport
-        const heroEl = document.querySelector('.hero');
-        const discordCta = document.querySelector('.discord-cta');
-        if (heroEl && discordCta) {
-          const discordObs = new IntersectionObserver(
-            ([entry]) => {
-              discordCta.classList.toggle('visible', !entry.isIntersecting);
-            },
-            { threshold: 0 }
-          );
-          discordObs.observe(heroEl);
-        }
-
-        const progress = document.querySelector('.scroll-progress');
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-          if (!ticking) {
-            requestAnimationFrame(() => {
-              const y = window.scrollY;
-              header?.classList.toggle('scrolled', y > 80);
-              const max = document.documentElement.scrollHeight - window.innerHeight;
-              if (progress) progress.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
-              ticking = false;
-            });
-            ticking = true;
-          }
-        });
       } else {
         document.querySelectorAll('.reveal, .reveal-group').forEach((el) => el.classList.add('revealed'));
       }
+
+      // --- Functional UI (runs regardless of motion preference) ---
+
+      // Mobile nav toggle
+      const navToggle = document.querySelector('.nav-toggle');
+      const header = document.querySelector('.site-header');
+      navToggle?.addEventListener('click', () => {
+        const open = header.classList.toggle('nav-open');
+        navToggle.setAttribute('aria-expanded', String(open));
+      });
+      document.querySelectorAll('.top-nav a').forEach((a) => {
+        a.addEventListener('click', () => {
+          header.classList.remove('nav-open');
+          navToggle?.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Discord CTA — show after hero exits viewport
+      const heroEl = document.querySelector('.hero');
+      const discordCta = document.querySelector('.discord-cta');
+      if (heroEl && discordCta) {
+        const discordObs = new IntersectionObserver(
+          ([entry]) => {
+            discordCta.classList.toggle('visible', !entry.isIntersecting);
+          },
+          { threshold: 0 }
+        );
+        discordObs.observe(heroEl);
+      }
+
+      // Header shrink + scroll progress
+      const progress = document.querySelector('.scroll-progress');
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const y = window.scrollY;
+            header?.classList.toggle('scrolled', y > 80);
+            const max = document.documentElement.scrollHeight - window.innerHeight;
+            if (progress) progress.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
     </script>
   </body>
 </html>
