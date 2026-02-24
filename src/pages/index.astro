@@ -54,6 +54,15 @@ const communities = [
       "A curated group of highly technical builders working at the edge of deep learning and agentic systems.",
     url: "https://eventship.com/event/san-diego-ai-circle",
     accent: "#1a1a2e"
+  },
+  {
+    name: "North County AI Coffee",
+    logo: "/logos/north-county-ai.png",
+    tagline: "North County's AI builders",
+    description:
+      "For curious technical minds exploring the latest in AI. Share projects, ask questions, and connect with North County builders and learners.",
+    url: "https://luma.com/byhq3uy0",
+    accent: "#6F4E37"
   }
 ];
 
@@ -154,6 +163,16 @@ const events = [
     status: "Confirmed",
     signupLabel: "RSVP on DEVx",
     signupUrl: "https://devx.network/events/evt-Dzpa16BGEiR3NGk"
+  },
+  {
+    title: "North County AI Coffee Chat",
+    when: "Saturday, February 28 - 8:30 AM - 10:30 AM",
+    where: "Pier View Coffee Co, Oceanside, CA",
+    description:
+      "For curious technical minds exploring the latest in AI. Connect with North County builders, share projects, and learn something new. This week's theme: Autonomous Agents, celebrating OpenClaw SD weekend.",
+    status: "Community Event",
+    signupLabel: "RSVP on Luma",
+    signupUrl: "https://luma.com/byhq3uy0"
   },
   {
     title: "AI Tinkerers Global Unhackathon",
@@ -287,6 +306,38 @@ for (const event of events) {
               "@type": "Organization",
               "name": "OpenClaw SD",
               "url": "https://openclawsd.com/"
+            }
+          },
+          {
+            "@type": "Event",
+            "name": "North County AI Coffee Chat",
+            "description": "For curious technical minds exploring the latest in AI. Connect with North County builders, share projects, and learn something new. This week's theme: Autonomous Agents, celebrating OpenClaw SD weekend.",
+            "startDate": "2026-02-28T08:30:00-08:00",
+            "endDate": "2026-02-28T10:30:00-08:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "Pier View Coffee Co",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Oceanside",
+                "addressRegion": "CA",
+                "addressCountry": "US"
+              }
+            },
+            "url": "https://luma.com/byhq3uy0",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://luma.com/byhq3uy0"
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "North County AI Coffee",
+              "url": "https://luma.com/byhq3uy0"
             }
           },
           {
@@ -491,11 +542,11 @@ for (const event of events) {
           <div class="hero-stats">
             <div class="container hero-stats-grid">
               <div class="hero-stat">
-                <span class="hero-stat-number">5</span>
+                <span class="hero-stat-number">6</span>
                 <span class="hero-stat-label">Events over 3 days</span>
               </div>
               <div class="hero-stat">
-                <span class="hero-stat-number">4</span>
+                <span class="hero-stat-number">5</span>
                 <span class="hero-stat-label">SD communities</span>
               </div>
               <div class="hero-stat">

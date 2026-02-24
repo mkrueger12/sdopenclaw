@@ -35,6 +35,13 @@ const communities = [
       "A curated group of highly technical builders working at the edge of deep learning and agentic systems.",
     url: "https://eventship.com/event/san-diego-ai-circle",
   },
+  {
+    name: "North County AI Coffee",
+    tagline: "North County's AI builders",
+    description:
+      "For curious technical minds exploring the latest in AI. Share projects, ask questions, and connect with North County builders and learners.",
+    url: "https://luma.com/byhq3uy0",
+  },
 ];
 
 const sponsors = [
@@ -107,6 +114,15 @@ const events = [
       "Join the Claw Club and get your OpenClaw journey started. A hands-on workshop covering setup, hosting, models, channels, and everything you need to hit the ground running. By the end of the night, you'll have the power of OpenClaw at your fingertips.",
     signupLabel: "RSVP on DEVx",
     signupUrl: "https://devx.network/events/evt-Dzpa16BGEiR3NGk",
+  },
+  {
+    title: "North County AI Coffee Chat",
+    when: "Saturday, February 28 - 8:30 AM - 10:30 AM",
+    where: "Pier View Coffee Co, Oceanside, CA",
+    description:
+      "For curious technical minds exploring the latest in AI. Connect with North County builders, share projects, and learn something new. This week's theme: Autonomous Agents, celebrating OpenClaw SD weekend.",
+    signupLabel: "RSVP on Luma",
+    signupUrl: "https://luma.com/byhq3uy0",
   },
   {
     title: "AI Tinkerers Global Unhackathon",
