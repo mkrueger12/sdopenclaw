@@ -43,7 +43,7 @@ const overlay = `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height
     font-weight="400"
     font-size="34"
     fill="rgba(255,255,255,0.88)"
-  >February 28 \u2013 March 1, 2026  \u00b7  San Diego, CA</text>
+  >February 27 \u2013 March 1, 2026  \u00b7  San Diego, CA</text>
 
   <!-- Watermark -->
   <text
