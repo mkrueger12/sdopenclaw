@@ -100,7 +100,7 @@ const organizers = [
   },
   {
     name: "Sam Holmes",
-    org: "DEVxSD",
+    org: "DEVxSD / Edge",
     url: "https://devx.network",
   },
 ];
