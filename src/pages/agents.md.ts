@@ -42,6 +42,13 @@ const communities = [
       "For curious technical minds exploring the latest in AI. Share projects, ask questions, and connect with North County builders and learners.",
     url: "https://luma.com/byhq3uy0",
   },
+  {
+    name: "San Diego Product Roundtable",
+    tagline: "Making and marketing great products",
+    description:
+      "A San Diego mastermind group for product owners, managers, developers, designers, and marketers. Supportive peer discussions focused on building and shipping great products.",
+    url: "https://luma.com/k7754zlq",
+  },
 ];
 
 const sponsors = [
@@ -161,6 +168,15 @@ const events = [
       "Show-and-tell for builders and claw-curious. Five-minute demos, real stories, no pitches. Mac Mini giveaway for the best showcase. Food and drinks provided.",
     signupLabel: "RSVP on Luma",
     signupUrl: "https://luma.com/OpenclawSd",
+  },
+  {
+    title: "Builders Roundtable: Execution With OpenClaw",
+    when: "Thursday, March 5 - 10:00 AM - 11:30 AM",
+    where: "Kiln, 17190 Bernardo Center Dr Suite 200, San Diego, CA 92128",
+    description:
+      "Continuing the OpenClaw SD weekend momentum. Share what's working — and failing — in real workflows, identify reliability and cost fixes, and leave with one concrete experiment to run this week. Small roundtables of 4–5. Real projects, real constraints, no pitching. Hosted by San Diego Product Roundtable.",
+    signupLabel: "RSVP on Luma",
+    signupUrl: "https://luma.com/k7754zlq",
   },
 ];
 

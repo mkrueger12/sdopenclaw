@@ -9,6 +9,7 @@ import imgDeepDive from "../assets/images/events/deep-dive.jpg";
 import imgShowcase from "../assets/images/events/showcase.png";
 import imgMoltsMalts from "../assets/images/events/molts-malts.jpg";
 import imgNorthCountyAI from "../assets/images/events/north-county-ai-coffee.jpg";
+import imgProductRoundtable from "../assets/images/events/productroundtable.png";
 import "../styles/global.css";
 
 const weekend = {
@@ -64,6 +65,15 @@ const communities = [
       "For curious technical minds exploring the latest in AI. Share projects, ask questions, and connect with North County builders and learners.",
     url: "https://luma.com/byhq3uy0",
     accent: "#6F4E37"
+  },
+  {
+    name: "San Diego Product Roundtable",
+    logo: "/logos/Productroundatble.avif",
+    tagline: "Making and marketing great products",
+    description:
+      "A San Diego mastermind group for product owners, managers, developers, designers, and marketers. Supportive peer discussions focused on building and shipping great products.",
+    url: "https://luma.com/k7754zlq",
+    accent: "#1d4ed8"
   }
 ];
 
@@ -222,6 +232,18 @@ const events = [
     status: "Confirmed",
     signupLabel: "RSVP on Luma",
     signupUrl: "https://luma.com/OpenclawSd"
+  },
+  {
+    title: "Builders Roundtable: Execution With OpenClaw",
+    when: "Thursday, March 5 - 10:00 AM - 11:30 AM",
+    where: "Kiln, 17190 Bernardo Center Dr Suite 200, San Diego, CA 92128",
+    description:
+      "Continuing the OpenClaw SD weekend momentum. Share what's working — and failing — in real workflows, identify reliability and cost fixes, and leave with one concrete experiment to run this week. Small roundtables of 4–5. Real projects, real constraints, no pitching. Hosted by San Diego Product Roundtable.",
+    image: imgProductRoundtable,
+    imageFit: "contain",
+    status: "Community Event",
+    signupLabel: "RSVP on Luma",
+    signupUrl: "https://luma.com/k7754zlq"
   }
 ];
 
@@ -473,6 +495,40 @@ for (const event of events) {
               "@type": "Organization",
               "name": "OpenClaw SD",
               "url": "https://openclawsd.com/"
+            }
+          },
+          {
+            "@type": "Event",
+            "name": "Builders Roundtable: Execution With OpenClaw",
+            "description": "Share what's working and failing in real OpenClaw workflows. Small roundtables of 4-5 — real projects, real constraints, no pitching. Hosted by San Diego Product Roundtable.",
+            "startDate": "2026-03-05T10:00:00-08:00",
+            "endDate": "2026-03-05T11:30:00-08:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "location": {
+              "@type": "Place",
+              "name": "Kiln",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "17190 Bernardo Center Dr Suite 200",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "postalCode": "92128",
+                "addressCountry": "US"
+              }
+            },
+            "url": "https://luma.com/k7754zlq",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://luma.com/k7754zlq"
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "San Diego Product Roundtable",
+              "url": "https://luma.com/k7754zlq"
             }
           }
         ]
